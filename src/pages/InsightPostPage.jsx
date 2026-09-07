@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import Seo from '../components/common/Seo';
 import NotFoundPage from './NotFoundPage';
 import { insights } from '../data/insights';
+import { articleJsonLd } from '../data/structuredData';
 
 const dateFormatter = new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
 
@@ -14,7 +15,7 @@ export default function InsightPostPage() {
 
   return (
     <main>
-      <Seo title={post.title} description={post.excerpt} path={`/insights/${post.slug}`} />
+      <Seo title={post.title} description={post.excerpt} path={`/insights/${post.slug}`} jsonLd={articleJsonLd(post)} />
       <article className="page-shell max-w-3xl pt-12 sm:pt-16">
         <Link to="/insights" className="inline-flex items-center gap-1.5 text-sm font-bold text-royal transition hover:text-[#1E56D6]"><ArrowLeft size={16} /> All insights</Link>
         <span className="eyebrow mt-6 w-fit">{post.tag}</span>

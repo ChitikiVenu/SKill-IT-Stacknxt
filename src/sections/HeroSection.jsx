@@ -47,7 +47,7 @@ export default function HeroSection() {
   const cards = featuredCourses.map((entry) => ({ ...entry, track: getCourseTrackBySlug(entry.slug) })).filter((entry) => entry.track);
 
   return (
-    <section id="home" className="relative isolate overflow-hidden bg-gradient-to-b from-[#EAF0FF] via-[#F5F8FF] to-white">
+    <section id="home" className="relative isolate flex min-h-[100svh] snap-start flex-col justify-center overflow-hidden bg-gradient-to-b from-[#EAF0FF] via-[#F5F8FF] to-white">
       {/* Concentric ring decoration, top-right — plain outlines, not filled/blurred, to match the reference's light airy background. */}
       <div className="absolute -right-20 -top-24 -z-10 h-[260px] w-[260px] rounded-full border border-royal/15" />
       <div className="absolute -right-32 -top-36 -z-10 h-[380px] w-[380px] rounded-full border border-royal/10" />
@@ -65,17 +65,21 @@ export default function HeroSection() {
         <path d="M0,150 C260,90 520,180 760,140 C1000,100 1220,170 1440,150 L1440,200 L0,200 Z" fill="#EEF3FF" fillOpacity="0.8" />
       </svg>
 
+      {/* These used to be "hidden xl:block" — invisible on phones, tablets, and even on
+          laptops once the browser is zoomed in enough to push the effective layout width
+          under the xl breakpoint. A fluid clamp() width keeps them on screen at every size
+          and zoom level instead of switching off entirely below one fixed breakpoint. */}
       <img
         src={studentPortraitLeft}
         alt="Skill IT Education learner"
         style={{ maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)' }}
-        className="pointer-events-none absolute left-6 top-28 hidden w-[220px] object-contain xl:block"
+        className="pointer-events-none absolute left-1 top-[clamp(2.5rem,11vh,7rem)] w-[clamp(56px,15vw,220px)] object-contain opacity-30 sm:left-3 sm:opacity-60 lg:left-6 lg:opacity-100"
       />
       <img
         src={studentPortraitRight}
         alt="Skill IT Education learner"
         style={{ maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)' }}
-        className="pointer-events-none absolute right-6 top-28 hidden w-[220px] object-contain xl:block"
+        className="pointer-events-none absolute right-1 top-[clamp(2.5rem,11vh,7rem)] w-[clamp(56px,15vw,220px)] object-contain opacity-30 sm:right-3 sm:opacity-60 lg:right-6 lg:opacity-100"
       />
 
       <div className="page-shell relative w-full pb-6 pt-20 sm:pb-8 md:pt-24 lg:pt-28">

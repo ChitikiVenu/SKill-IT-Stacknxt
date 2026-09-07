@@ -6,7 +6,7 @@ export default function VideoSection() {
     return (
         <section
             id='video'
-            className='section-fade scroll-mt-24 py-20 sm:py-28'
+            className='section-fade flex min-h-[100svh] snap-start flex-col justify-center scroll-mt-24 py-[clamp(1.5rem,5vh,4rem)]'
         >
             <div className='page-shell'>
                 <SectionHeading
@@ -14,13 +14,13 @@ export default function VideoSection() {
                     title='Built for the career you want next'
                     description='See how guided learning, mentorship, and interview practice work together to move your career forward.'
                 />
-                <div className='relative mt-10 rounded-[32px] bg-blue-mint p-3 shadow-soft sm:p-6'>
+                <div className='relative mx-auto mt-[clamp(1rem,4vh,2.5rem)] max-h-[55svh] w-full max-w-3xl rounded-[32px] bg-blue-mint p-3 shadow-soft sm:p-6'>
                     <motion.div
                         className='absolute -left-5 top-16 hidden h-16 w-16 rounded-full bg-royal/20 blur-xl md:block'
                         animate={{y: [0, 18, 0]}}
                         transition={{duration: 5, repeat: Infinity}}
                     />
-                    <div className='relative aspect-video overflow-hidden rounded-[24px] bg-slate-900 shadow-card'>
+                    <div className='relative aspect-video max-h-[50svh] overflow-hidden rounded-[24px] bg-slate-900 shadow-card'>
                         <iframe
                             className='h-full w-full'
                             src='https://www.youtube-nocookie.com/embed/5MgBikgcWnY?rel=0'

@@ -9,14 +9,14 @@ export default function SuccessStoriesSection() {
   const track = useMemo(() => [...successStories, ...successStories], []);
 
   return (
-    <section id="success-stories" className="scroll-mt-24 py-20 sm:py-28">
+    <section id="success-stories" className="flex min-h-[100svh] snap-start flex-col justify-center scroll-mt-24 py-[clamp(1.5rem,5vh,4rem)]">
       <div className="page-shell">
         <SectionHeading eyebrow="Learner journeys" title="All courses offered career success stories" description="Career transitions in motion—from guided learning and practice to impactful technical roles." />
         <div className="mt-10 overflow-hidden" style={{ maskImage: 'linear-gradient(90deg, transparent, black 6%, black 94%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, black 6%, black 94%, transparent)' }}>
           <div className="marquee-track flex w-max gap-5">
             {track.map((story, index) => (
-              <article key={`${story.id}-${index}`} className="group relative w-[300px] shrink-0 overflow-hidden rounded-[28px] bg-ink shadow-card sm:w-[370px]">
-                <img src={story.image} alt={`${story.name}'s career success story`} loading="lazy" className="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105" />
+              <article key={`${story.id}-${index}`} className="group relative w-[260px] shrink-0 overflow-hidden rounded-[28px] bg-ink shadow-card sm:w-[340px]">
+                <img src={story.image} alt={`${story.name}'s career success story`} loading="lazy" className="h-[clamp(200px,42svh,300px)] w-full object-cover transition duration-500 group-hover:scale-105" />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
                 <button onClick={() => setSelectedStory(story)} aria-label={`Play ${story.name}'s story`} className="absolute left-1/2 top-1/2 z-10 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-royal shadow-xl transition hover:scale-110"><Play size={25} fill="currentColor" /></button>
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 p-6 text-white">

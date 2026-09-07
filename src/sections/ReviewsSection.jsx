@@ -8,7 +8,7 @@ export default function ReviewsSection() {
   const track = useMemo(() => [...reviews, ...reviews], []);
 
   return (
-    <section id="reviews" className="section-fade scroll-mt-24 py-20 sm:py-28">
+    <section id="reviews" className="section-fade flex min-h-[100svh] snap-start flex-col justify-center scroll-mt-24 py-[clamp(1.5rem,5vh,4rem)]">
       <div className="page-shell">
         <SectionHeading eyebrow="LinkedIn learner testimonials" title="Every course. Real learner momentum." description="Scroll through reflections from learners who turned structured practice into confident next steps." />
         <div className="mt-10 overflow-hidden" style={{ maskImage: 'linear-gradient(90deg, transparent, black 6%, black 94%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, black 6%, black 94%, transparent)' }}>

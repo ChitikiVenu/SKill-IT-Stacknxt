@@ -20,9 +20,6 @@ const CertificatesSection = lazy(
 );
 const CoursesSection = lazy(() => import('../sections/CoursesSection'));
 const FaqSection = lazy(() => import('../sections/FaqSection'));
-const PlacementPartnersMarquee = lazy(
-    () => import('../components/course/PlacementPartnersMarquee'),
-);
 const ReviewsSection = lazy(() => import('../sections/ReviewsSection'));
 const SuccessStoriesSection = lazy(
     () => import('../sections/SuccessStoriesSection'),
@@ -97,9 +94,6 @@ export default function LandingPage() {
             <AccreditationsSection />
             <div ref={scrollTriggerRef} aria-hidden='true' />
             <Suspense fallback={<SectionFallback />}>
-                <div className='page-shell py-4'>
-                    <PlacementPartnersMarquee />
-                </div>
                 <VideoSection />
                 <CoursesSection />
                 <CertificatesSection />

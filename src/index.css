@@ -8,6 +8,7 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 88px;
+    scroll-snap-type: y proximity;
   }
 
   body {

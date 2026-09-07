@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import {useEffect, useRef, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import useScrolledPast from '../../hooks/useScrolledPast';
 import {findAnswer} from '../../lib/chatbotKnowledge';
 import {WHATSAPP_MESSAGE, WHATSAPP_NUMBER} from './FloatingWhatsAppButton';
 
@@ -56,6 +57,11 @@ export default function FloatingChatbot() {
     const [typing, setTyping] = useState(false);
     const navigate = useNavigate();
     const scrollRef = useRef(null);
+    // Only the closed bubble is hidden near the top of the page (it can otherwise sit right
+    // on top of a section's own CTA button, as it did on the homepage hero) — once someone
+    // has actually opened the panel, it stays put regardless of scroll position.
+    const scrolledPast = useScrolledPast();
+    const bubbleVisible = scrolledPast || open;
 
     useEffect(() => {
         scrollRef.current?.scrollTo({
@@ -100,14 +106,14 @@ export default function FloatingChatbot() {
                 onClick={() => setOpen(true)}
                 aria-expanded={false}
                 aria-label='Chat with Sana, your Skill IT Education assistant'
-                className='group fixed bottom-5 right-5 z-40 sm:bottom-7 sm:right-7'
+                className={`group fixed bottom-5 right-5 z-40 transition-all duration-300 sm:bottom-7 sm:right-7 ${bubbleVisible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'}`}
             >
                 <span className='pointer-events-none absolute -top-11 right-0 whitespace-nowrap rounded-full bg-ink px-3.5 py-2 text-xs font-bold text-white opacity-0 shadow-lg transition duration-200 group-hover:opacity-100'>
                     Chat with Sana 💬
                 </span>
                 <span className='absolute inset-0 animate-ping rounded-full bg-royal/50' />
-                <span className='relative grid h-14 w-14 place-items-center rounded-full bg-royal text-white shadow-xl shadow-royal/30 transition duration-200 group-hover:scale-110'>
-                    <MessageCircle size={24} />
+                <span className='relative grid h-12 w-12 place-items-center rounded-full bg-royal text-white shadow-xl shadow-royal/30 transition duration-200 group-hover:scale-110 sm:h-14 sm:w-14'>
+                    <MessageCircle size={22} />
                 </span>
             </button>
         );
