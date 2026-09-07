@@ -41,7 +41,7 @@ export default function HeroSection() {
   const cards = featuredCourses.map((entry) => ({ ...entry, track: getCourseTrackBySlug(entry.slug) })).filter((entry) => entry.track);
 
   return (
-    <section id="home" className="relative isolate overflow-hidden bg-gradient-to-b from-[#EAF0FF] via-[#F5F8FF] to-white">
+    <section id="home" className="relative isolate overflow-hidden bg-gradient-to-b from-[#EAF0FF] via-[#F5F8FF] to-white lg:flex lg:min-h-[100svh] lg:items-center">
       {/* Concentric ring decoration, top-right — plain outlines, not filled/blurred, to match the reference's light airy background. */}
       <div className="absolute -right-20 -top-24 -z-10 h-[260px] w-[260px] rounded-full border border-royal/15" />
       <div className="absolute -right-32 -top-36 -z-10 h-[380px] w-[380px] rounded-full border border-royal/10" />
@@ -61,24 +61,24 @@ export default function HeroSection() {
         className="pointer-events-none absolute right-6 top-28 hidden w-[220px] object-contain xl:block"
       />
 
-      <div className="page-shell relative pb-16 pt-32 sm:pb-20 md:pt-40">
+      <div className="page-shell relative w-full pb-8 pt-24 sm:pb-10 md:pt-28 lg:py-10">
         <div className="mx-auto max-w-2xl text-center">
           <motion.span
-            className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.14em] text-amber-700"
+            className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.14em] text-amber-700"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
           >
             <span className="h-1.5 w-1.5 rounded-full bg-amber-500" /> Upcoming batch
           </motion.span>
 
-          <motion.p className="mt-5 text-sm font-semibold text-muted" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>
+          <motion.p className="mt-3 text-sm font-semibold text-muted" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>
             Our upcoming batch starts on
           </motion.p>
-          <motion.p className="mt-1 flex items-center justify-center gap-2 font-display text-2xl font-extrabold text-royal sm:text-3xl" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-            <CalendarDays size={26} className="text-royal" /> {BATCH_DATE}
+          <motion.p className="mt-1 flex items-center justify-center gap-2 font-display text-xl font-extrabold text-royal sm:text-2xl" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+            <CalendarDays size={22} className="text-royal" /> {BATCH_DATE}
           </motion.p>
 
-          <motion.h1 className="mt-7 font-display text-5xl font-black leading-[1.08] tracking-tight text-ink sm:text-6xl lg:text-7xl" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
+          <motion.h1 className="mt-4 font-display text-4xl font-black leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-6xl" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
             We train you to become a
             <span className="relative mx-auto mt-1 block h-[1.2em] w-full overflow-hidden sm:h-[1.15em]">
               <AnimatePresence>
@@ -96,34 +96,34 @@ export default function HeroSection() {
             </span>
           </motion.h1>
 
-          <motion.p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted sm:text-lg" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+          <motion.p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-muted sm:text-base" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
             Hands-on training built around practical labs, real-world projects and career-ready skills — not slides and theory.
           </motion.p>
         </div>
 
-        <motion.div className="relative z-10 mx-auto mt-10 grid max-w-4xl gap-5 sm:grid-cols-2" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28 }}>
+        <motion.div className="relative z-10 mx-auto mt-6 grid max-w-4xl gap-4 sm:grid-cols-2" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28 }}>
           {cards.map(({ track, icon: Icon, accent, checklist }) => (
-            <div key={track.slug} className="course-card flex flex-col rounded-[28px] border border-slate-100 bg-white p-6 shadow-card">
-              <span className={`grid h-11 w-11 place-items-center rounded-2xl ${accent}`}>
-                <Icon size={22} />
+            <div key={track.slug} className="course-card flex flex-col rounded-[24px] border border-slate-100 bg-white p-5 shadow-card">
+              <span className={`grid h-10 w-10 place-items-center rounded-2xl ${accent}`}>
+                <Icon size={20} />
               </span>
-              <h3 className="mt-4 font-display text-xl font-extrabold text-ink">{track.title} Course</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">{track.tagline}</p>
-              <ul className="mt-4 space-y-2">
+              <h3 className="mt-3 font-display text-lg font-extrabold text-ink">{track.title} Course</h3>
+              <p className="mt-1.5 text-sm leading-5 text-muted">{track.tagline}</p>
+              <ul className="mt-3 space-y-1.5">
                 {checklist.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm leading-5 text-slate-700">
                     <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-mint" /> {item}
                   </li>
                 ))}
               </ul>
-              <Link to="/courses" className="primary-button mt-6 w-full">
+              <Link to="/courses" className="primary-button mt-4 w-full">
                 Explore Full {track.title} Curriculum
               </Link>
             </div>
           ))}
         </motion.div>
 
-        <motion.div className="mt-8 flex flex-wrap justify-center gap-3" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.34 }}>
+        <motion.div className="mt-5 flex flex-wrap justify-center gap-3" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.34 }}>
           <Link to="/contact" className="primary-button">Book Free Demo</Link>
           <a href={advisorWhatsappUrl} target="_blank" rel="noopener noreferrer" className="secondary-button">Talk to an Advisor</a>
         </motion.div>
