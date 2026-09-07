@@ -47,7 +47,7 @@ export default function HeroSection() {
   const cards = featuredCourses.map((entry) => ({ ...entry, track: getCourseTrackBySlug(entry.slug) })).filter((entry) => entry.track);
 
   return (
-    <section id="home" className="relative isolate overflow-hidden bg-gradient-to-b from-[#EAF0FF] via-[#F5F8FF] to-white lg:flex lg:min-h-[100svh] lg:items-center">
+    <section id="home" className="relative isolate overflow-hidden bg-gradient-to-b from-[#EAF0FF] via-[#F5F8FF] to-white">
       {/* Concentric ring decoration, top-right — plain outlines, not filled/blurred, to match the reference's light airy background. */}
       <div className="absolute -right-20 -top-24 -z-10 h-[260px] w-[260px] rounded-full border border-royal/15" />
       <div className="absolute -right-32 -top-36 -z-10 h-[380px] w-[380px] rounded-full border border-royal/10" />
@@ -78,7 +78,7 @@ export default function HeroSection() {
         className="pointer-events-none absolute right-6 top-28 hidden w-[220px] object-contain xl:block"
       />
 
-      <div className="page-shell relative w-full pb-8 pt-24 sm:pb-10 md:pt-28 lg:py-10">
+      <div className="page-shell relative w-full pb-10 pt-28 sm:pb-12 md:pt-32 lg:pt-36">
         <div className="mx-auto max-w-3xl text-center">
           <motion.p className="text-sm font-semibold text-slate-600 sm:text-base" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
             Cyber Security, AI Engineering &amp; Data Science Upskilling in Madhapur, Hyderabad
