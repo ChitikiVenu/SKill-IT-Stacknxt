@@ -65,9 +65,9 @@ export default function CareerMatcherSection() {
   };
 
   return (
-    <section id="career-matcher" className="scroll-mt-24 py-20 sm:py-28">
+    <section id="career-matcher" className="flex min-h-[100svh] snap-start flex-col justify-center scroll-mt-24 py-[clamp(1.5rem,5vh,4rem)]">
       <div className="page-shell">
-        <div className="rounded-[32px] border border-white bg-gradient-to-br from-mist to-white px-6 py-10 shadow-soft sm:px-10 sm:py-12">
+        <div className="rounded-[32px] border border-white bg-gradient-to-br from-mist to-white px-6 py-[clamp(1.5rem,4vh,3rem)] shadow-soft sm:px-10">
           <SectionHeading eyebrow="60-second career matcher" title="Not sure which track fits you?" description="Answer 3 quick questions and we'll point you to the right course." />
 
           <div className="mx-auto mt-8 max-w-2xl">

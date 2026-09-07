@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { BadgeCheck } from 'lucide-react';
 import SectionHeading from '../components/common/SectionHeading';
+import PlacementPartnersMarquee from '../components/course/PlacementPartnersMarquee';
 import { accreditations } from '../data/content';
 import comptiaLogo from '../assets/images/comptia.png';
 import ecCouncilLogo from '../assets/images/council.png';
@@ -12,7 +13,7 @@ export default function AccreditationsSection() {
   const recognitionCards = accreditations.filter((item) => item.group === 'recognition');
   const qualityCards = accreditations.filter((item) => item.group === 'quality');
   return (
-    <section id="accreditations" className="section-fade scroll-mt-24 py-14 sm:py-16">
+    <section id="accreditations" className="section-fade flex min-h-[100svh] snap-start flex-col justify-center scroll-mt-24 py-[clamp(1.5rem,5vh,4rem)]">
       <div className="page-shell">
         <div className="rounded-[28px] border border-white bg-white/70 px-6 py-8 shadow-soft sm:px-10 sm:py-9">
           <SectionHeading eyebrow="Accreditations" title="Recognised learning ecosystems, practical outcomes" />
@@ -34,6 +35,12 @@ export default function AccreditationsSection() {
               <span key={item.id} className="flex items-center gap-1.5 text-xs font-bold text-royal"><BadgeCheck size={14} /> {item.name}</span>
             ))}
           </div>
+        </div>
+
+        {/* Placement partners strip lives in this same screen rather than getting its own —
+            it's a short trust signal, not a section someone needs to linger on. */}
+        <div className="mt-[clamp(1rem,3vh,1.5rem)] hidden sm:block">
+          <PlacementPartnersMarquee />
         </div>
       </div>
     </section>

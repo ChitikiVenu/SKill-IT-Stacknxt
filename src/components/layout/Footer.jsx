@@ -1,4 +1,5 @@
-import {ArrowUp, Mail, MapPin, Phone} from 'lucide-react';
+import {ArrowUp, ChevronDown, Mail, MapPin, Phone} from 'lucide-react';
+import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import logoImg from '../../assets/images/logo.png';
 
@@ -106,10 +107,14 @@ function FooterLink({label, to}) {
 }
 
 export default function Footer() {
+    // Link columns collapse into an accordion (one title row each) so this footer's height stays
+    // bounded no matter how many link columns exist — expand only the one you want, on any screen.
+    const [openColumn, setOpenColumn] = useState(null);
+
     return (
-        <footer className='mt-20 bg-ink pt-14 text-white'>
+        <footer className='snap-start bg-ink pt-[clamp(1.5rem,5vh,3.5rem)] text-white'>
             <div className='page-shell'>
-                <div className='flex flex-wrap items-start justify-between gap-8 border-b border-white/10 pb-10'>
+                <div className='flex flex-wrap items-start justify-between gap-6 border-b border-white/10 pb-[clamp(1rem,4vh,2.5rem)]'>
                     <div className='max-w-xs'>
                         <Link to='/' className='flex items-center gap-2.5'>
                             <img
@@ -199,13 +204,13 @@ export default function Footer() {
                             href='https://www.google.com/maps/search/?api=1&query=Madhapur+Hyderabad+Telangana'
                             target='_blank'
                             rel='noopener noreferrer'
-                            className='mt-3 block overflow-hidden rounded-2xl border border-white/10 transition hover:border-white/25'
+                            className='mt-3 hidden overflow-hidden rounded-2xl border border-white/10 transition hover:border-white/25 md:block'
                         >
                             <iframe
                                 title='Skill IT Education office location — Madhapur, Hyderabad'
                                 src='https://www.google.com/maps?q=Madhapur,+Hyderabad,+Telangana&output=embed'
                                 width='100%'
-                                height='140'
+                                height='90'
                                 style={{
                                     border: 0,
                                     display: 'block',
@@ -227,17 +232,36 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className='grid grid-cols-2 gap-x-6 gap-y-9 border-b border-white/10 py-10 sm:grid-cols-4'>
-                    {footerColumns.map((column) => (
-                        <div key={column.title}>
-                            <h2 className='font-bold'>{column.title}</h2>
-                            <div className='mt-4 flex flex-col items-start gap-2 text-sm text-slate-300'>
-                                {column.links.map((link) => (
-                                    <FooterLink key={link.label} {...link} />
-                                ))}
+                {/*
+                 * Link columns collapse to one title row each — tap a title to expand it. With 8
+                 * columns × ~5 links, showing everything open at once would make this footer far
+                 * taller than a screen on every device; an accordion keeps its height fixed
+                 * regardless of how many columns or links exist.
+                 */}
+                <div className='grid grid-cols-2 gap-x-6 divide-y divide-white/10 border-b border-white/10 sm:grid-cols-4 sm:divide-y-0'>
+                    {footerColumns.map((column) => {
+                        const isOpen = openColumn === column.title;
+                        return (
+                            <div key={column.title} className='col-span-2 border-t border-white/10 first:border-t-0 sm:col-span-1 sm:border-t-0'>
+                                <button
+                                    type='button'
+                                    onClick={() => setOpenColumn(isOpen ? null : column.title)}
+                                    aria-expanded={isOpen}
+                                    className='flex w-full items-center justify-between gap-2 py-3.5 text-left font-bold'
+                                >
+                                    {column.title}
+                                    <ChevronDown size={16} className={`shrink-0 text-slate-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                                </button>
+                                {isOpen && (
+                                    <div className='flex flex-col items-start gap-2 pb-3.5 text-sm text-slate-300'>
+                                        {column.links.map((link) => (
+                                            <FooterLink key={link.label} {...link} />
+                                        ))}
+                                    </div>
+                                )}
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
 
                 <div className='flex flex-col gap-4 py-7 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between'>
