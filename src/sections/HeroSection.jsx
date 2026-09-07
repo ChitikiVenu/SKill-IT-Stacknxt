@@ -78,7 +78,7 @@ export default function HeroSection() {
         className="pointer-events-none absolute right-6 top-28 hidden w-[220px] object-contain xl:block"
       />
 
-      <div className="page-shell relative w-full pb-10 pt-28 sm:pb-12 md:pt-32 lg:pt-36">
+      <div className="page-shell relative w-full pb-6 pt-20 sm:pb-8 md:pt-24 lg:pt-28">
         <div className="mx-auto max-w-3xl text-center">
           <motion.p className="text-sm font-semibold text-slate-600 sm:text-base" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
             Cyber Security, AI Engineering &amp; Data Science Upskilling in Madhapur, Hyderabad
@@ -93,19 +93,33 @@ export default function HeroSection() {
             transition={{ delay: 0.05 }}
           >
             <span>We train you to become a</span>
-            <span className="relative inline-block h-[1.15em] overflow-hidden align-baseline">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={ROTATING_ROLES[roleIndex]}
-                  initial={{ y: '100%', opacity: 0 }}
-                  animate={{ y: '0%', opacity: 1 }}
-                  exit={{ y: '-100%', opacity: 0 }}
-                  transition={{ duration: 0.5, ease: 'easeInOut' }}
-                  className="inline-block bg-gradient-to-r from-royal to-sky bg-clip-text text-transparent"
+            <span className="relative inline-grid h-[1.15em] align-baseline">
+              {/* Invisible sizers: every rotating word stacked in the same grid cell. The grid
+                  track auto-sizes to the widest one, so this slot's width — and the headline's
+                  total width and centering — never changes as the visible word rotates. */}
+              {ROTATING_ROLES.map((role) => (
+                <span
+                  key={role}
+                  aria-hidden="true"
+                  className="invisible col-start-1 row-start-1 whitespace-nowrap"
                 >
-                  {ROTATING_ROLES[roleIndex]}
-                </motion.span>
-              </AnimatePresence>
+                  {role}
+                </span>
+              ))}
+              <span className="absolute inset-0 overflow-hidden text-left">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={ROTATING_ROLES[roleIndex]}
+                    initial={{ y: '100%', opacity: 0 }}
+                    animate={{ y: '0%', opacity: 1 }}
+                    exit={{ y: '-100%', opacity: 0 }}
+                    transition={{ duration: 0.5, ease: 'easeInOut' }}
+                    className="inline-block whitespace-nowrap bg-gradient-to-r from-royal to-sky bg-clip-text text-transparent"
+                  >
+                    {ROTATING_ROLES[roleIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
             </span>
           </motion.h1>
         </div>
@@ -113,7 +127,7 @@ export default function HeroSection() {
         <div className="mx-auto max-w-3xl text-center">
 
           <motion.span
-            className="mt-5 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.14em] text-amber-700"
+            className="mt-3 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.14em] text-amber-700"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -121,45 +135,45 @@ export default function HeroSection() {
             <span className="h-1.5 w-1.5 rounded-full bg-amber-500" /> Upcoming batch
           </motion.span>
 
-          <motion.p className="mt-3 text-sm font-semibold text-muted" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
+          <motion.p className="mt-2 text-sm font-semibold text-muted" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
             Our upcoming batch starts on
           </motion.p>
           <motion.p className="mt-1 flex items-center justify-center gap-2 font-display text-xl font-extrabold text-royal sm:text-2xl" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
             <CalendarDays size={22} className="text-royal" /> {BATCH_DATE}
           </motion.p>
 
-          <motion.p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-muted sm:text-base" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}>
+          <motion.p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-muted sm:text-base" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}>
             Hands-on training built around practical labs, real-world projects and career-ready skills — not slides and theory.
           </motion.p>
 
-          <motion.p className="mt-5 text-xs font-extrabold uppercase tracking-[0.14em] text-amber-700 sm:text-sm" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+          <motion.p className="mt-3 text-xs font-extrabold uppercase tracking-[0.14em] text-amber-700 sm:text-sm" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
             Job-Ready Technology Training in Hyderabad
           </motion.p>
         </div>
 
-        <motion.div className="relative z-10 mx-auto mt-4 grid max-w-4xl gap-4 sm:grid-cols-2" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
+        <motion.div className="relative z-10 mx-auto mt-3 grid max-w-4xl gap-3 sm:grid-cols-2" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
           {cards.map(({ track, icon: Icon, accent, displayTitle, blurb, checklist, buttonLabel }) => (
-            <div key={track.slug} className="course-card flex flex-col rounded-[24px] border border-slate-100 bg-white p-5 shadow-card">
+            <div key={track.slug} className="course-card flex flex-col rounded-[24px] border border-slate-100 bg-white p-4 shadow-card">
               <span className={`grid h-10 w-10 place-items-center rounded-2xl ${accent}`}>
                 <Icon size={20} />
               </span>
-              <h3 className={`mt-3 font-display text-lg font-extrabold ${accent.split(' ')[0]}`}>{displayTitle} Course</h3>
-              <p className="mt-1.5 line-clamp-2 text-sm leading-5 text-muted">{blurb}</p>
-              <ul className="mt-3 space-y-1.5">
+              <h3 className={`mt-2 font-display text-lg font-extrabold ${accent.split(' ')[0]}`}>{displayTitle} Course</h3>
+              <p className="mt-1 line-clamp-1 text-sm leading-5 text-muted">{blurb}</p>
+              <ul className="mt-2 space-y-1">
                 {checklist.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm leading-5 text-slate-700">
                     <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-mint" /> {item}
                   </li>
                 ))}
               </ul>
-              <Link to="/courses" className="primary-button mt-4 w-full">
+              <Link to="/courses" className="primary-button mt-3 w-full">
                 {buttonLabel}
               </Link>
             </div>
           ))}
         </motion.div>
 
-        <motion.div className="mt-5 flex flex-wrap justify-center gap-3" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+        <motion.div className="mt-3 flex flex-wrap justify-center gap-3" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
           <Link to="/contact" className="primary-button">Book Free Demo</Link>
           <a href={advisorWhatsappUrl} target="_blank" rel="noopener noreferrer" className="secondary-button">Talk to an Advisor</a>
         </motion.div>
