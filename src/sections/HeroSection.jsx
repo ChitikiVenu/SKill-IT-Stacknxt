@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { BrainCircuit, CalendarDays, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { CalendarDays, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCourseTrackBySlug } from '../data/coursesData';
@@ -11,7 +11,7 @@ import studentPortraitRight from '../assets/images/hero/student2.png';
 // outcome taught by one of them rather than a made-up job title.
 const ROTATING_ROLES = ['Ethical Hacker', 'AI Engineer', 'Data Scientist', 'SOC Analyst', 'Prompt Engineer'];
 
-const BATCH_DATE = 'September 14th, 2026';
+const BATCH_DATE = 'September 13th, 2026';
 
 const advisorWhatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
@@ -20,13 +20,19 @@ const featuredCourses = [
     slug: 'cyber-security',
     icon: ShieldCheck,
     accent: 'text-royal bg-royal/10',
-    checklist: ['Cyber Security & Ethical Hacking', 'Network & Cloud Security', 'Penetration Testing', 'AI-Assisted Threat Detection & more...'],
+    displayTitle: 'Cyber Security',
+    blurb: 'Learn the core concepts of cybersecurity, network security, the threat landscape, vulnerabilities, ethical hacking and incident response.',
+    checklist: ['Cyber Security & Ethical Hacking', 'Cyber Security Professional', 'Penetration Testing', 'AI in Cyber Security & more...'],
+    buttonLabel: 'Explore Full Cyber Security Curriculum',
   },
   {
     slug: 'ai-engineer',
-    icon: BrainCircuit,
+    icon: Sparkles,
     accent: 'text-indigo-600 bg-indigo-500/10',
-    checklist: ['Python & Machine Learning Foundations', 'Deep Learning & Computer Vision', 'NLP & Generative Models', 'MLOps & Model Deployment & more...'],
+    displayTitle: 'AI Engineering',
+    blurb: 'Build a strong foundation in Artificial Intelligence with Python, Machine Learning basics, Generative AI, LLMs and real-world projects.',
+    checklist: ['Data Science & Python Foundations', 'Machine Learning', 'Advanced Data Science & AI', 'Artificial Intelligence & Deep Learning & more...'],
+    buttonLabel: 'Explore AI Engineering Curriculum',
   },
 ];
 
@@ -62,33 +68,27 @@ export default function HeroSection() {
       />
 
       <div className="page-shell relative w-full pb-8 pt-24 sm:pb-10 md:pt-28 lg:py-10">
-        <div className="mx-auto max-w-2xl text-center">
-          <motion.span
-            className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.14em] text-amber-700"
-            initial={{ opacity: 0, y: 12 }}
+        <div className="mx-auto max-w-3xl text-center">
+          <motion.p className="text-sm font-semibold text-slate-600 sm:text-base" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
+            Cyber Security, AI Engineering &amp; Data Science Training in Hyderabad
+          </motion.p>
+
+          <motion.h1
+            className="mt-3 flex flex-wrap items-baseline justify-center gap-x-2 gap-y-1 font-display text-3xl font-black leading-[1.15] tracking-tight text-ink sm:text-4xl lg:text-5xl"
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.05 }}
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-amber-500" /> Upcoming batch
-          </motion.span>
-
-          <motion.p className="mt-3 text-sm font-semibold text-muted" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>
-            Our upcoming batch starts on
-          </motion.p>
-          <motion.p className="mt-1 flex items-center justify-center gap-2 font-display text-xl font-extrabold text-royal sm:text-2xl" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-            <CalendarDays size={22} className="text-royal" /> {BATCH_DATE}
-          </motion.p>
-
-          <motion.h1 className="mt-4 font-display text-4xl font-black leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-6xl" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
-            We train you to become a
-            <span className="relative mx-auto mt-1 block h-[1.2em] w-full overflow-hidden sm:h-[1.15em]">
-              <AnimatePresence>
+            <span>We train you to become a</span>
+            <span className="relative inline-block h-[1.15em] overflow-hidden align-baseline">
+              <AnimatePresence mode="wait">
                 <motion.span
                   key={ROTATING_ROLES[roleIndex]}
                   initial={{ y: '100%', opacity: 0 }}
                   animate={{ y: '0%', opacity: 1 }}
                   exit={{ y: '-100%', opacity: 0 }}
                   transition={{ duration: 0.5, ease: 'easeInOut' }}
-                  className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-royal to-sky bg-clip-text text-transparent"
+                  className="inline-block bg-gradient-to-r from-royal to-sky bg-clip-text text-transparent"
                 >
                   {ROTATING_ROLES[roleIndex]}
                 </motion.span>
@@ -96,19 +96,39 @@ export default function HeroSection() {
             </span>
           </motion.h1>
 
-          <motion.p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-muted sm:text-base" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+          <motion.span
+            className="mt-5 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.14em] text-amber-700"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-amber-500" /> Upcoming batch
+          </motion.span>
+
+          <motion.p className="mt-3 text-sm font-semibold text-muted" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
+            Our upcoming batch starts on
+          </motion.p>
+          <motion.p className="mt-1 flex items-center justify-center gap-2 font-display text-xl font-extrabold text-royal sm:text-2xl" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+            <CalendarDays size={22} className="text-royal" /> {BATCH_DATE}
+          </motion.p>
+
+          <motion.p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-muted sm:text-base" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}>
             Hands-on training built around practical labs, real-world projects and career-ready skills — not slides and theory.
+          </motion.p>
+
+          <motion.p className="mt-5 text-xs font-extrabold uppercase tracking-[0.14em] text-amber-700 sm:text-sm" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+            Job-Ready Technology Training in Hyderabad
           </motion.p>
         </div>
 
-        <motion.div className="relative z-10 mx-auto mt-6 grid max-w-4xl gap-4 sm:grid-cols-2" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28 }}>
-          {cards.map(({ track, icon: Icon, accent, checklist }) => (
+        <motion.div className="relative z-10 mx-auto mt-4 grid max-w-4xl gap-4 sm:grid-cols-2" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
+          {cards.map(({ track, icon: Icon, accent, displayTitle, blurb, checklist, buttonLabel }) => (
             <div key={track.slug} className="course-card flex flex-col rounded-[24px] border border-slate-100 bg-white p-5 shadow-card">
               <span className={`grid h-10 w-10 place-items-center rounded-2xl ${accent}`}>
                 <Icon size={20} />
               </span>
-              <h3 className="mt-3 font-display text-lg font-extrabold text-ink">{track.title} Course</h3>
-              <p className="mt-1.5 text-sm leading-5 text-muted">{track.tagline}</p>
+              <h3 className={`mt-3 font-display text-lg font-extrabold ${accent.split(' ')[0]}`}>{displayTitle} Course</h3>
+              <p className="mt-1.5 line-clamp-2 text-sm leading-5 text-muted">{blurb}</p>
               <ul className="mt-3 space-y-1.5">
                 {checklist.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm leading-5 text-slate-700">
@@ -117,13 +137,13 @@ export default function HeroSection() {
                 ))}
               </ul>
               <Link to="/courses" className="primary-button mt-4 w-full">
-                Explore Full {track.title} Curriculum
+                {buttonLabel}
               </Link>
             </div>
           ))}
         </motion.div>
 
-        <motion.div className="mt-5 flex flex-wrap justify-center gap-3" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.34 }}>
+        <motion.div className="mt-5 flex flex-wrap justify-center gap-3" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
           <Link to="/contact" className="primary-button">Book Free Demo</Link>
           <a href={advisorWhatsappUrl} target="_blank" rel="noopener noreferrer" className="secondary-button">Talk to an Advisor</a>
         </motion.div>
