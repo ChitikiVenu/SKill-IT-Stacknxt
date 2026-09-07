@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+
+  button, input {
+    font: inherit;
+  }
+  /* Shared interaction feedback for every non-disabled button in the SPA. */
+  button:not(:disabled) {
+    cursor: pointer;
+    transform: translateZ(0);
+    transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      color 180ms ease,
+      opacity 180ms ease;
+  }
+
+  button:not(:disabled):not(.primary-button):not(.secondary-button):hover {
+    transform: translateY(-1px);
+  }
+
+  button:not(:disabled):active {
+    transform: translateY(0) scale(0.97);
+  }
+
+  button:focus-visible, a:focus-visible, input:focus-visible {
+    @apply outline-none ring-4 ring-sky/30;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full bg-white/75 px-4 py-2 text-sm font-extrabold uppercase tracking-[0.14em] text-royal shadow-sm;
+  }
+
+  .primary-button {
+  
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-royal px-6 py-3 text-sm font-bold text-white shadow-lg shadow-royal/20 transition hover:-translate-y-0.5 hover:bg-[#1E56D6] hover:shadow-xl hover:shadow-royal/30 active:translate-y-0 active:scale-[.97];
+  }
+
+  .secondary-button {
+   
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-royal bg-white/90 px-6 py-3 text-sm font-bold text-royal transition hover:-translate-y-0.5 hover:bg-[#F1F6FF] hover:shadow-lg hover:shadow-royal/10 active:translate-y-0 active:scale-[.97];
+  }
+
+  .surface-card {
+    @apply rounded-[28px] border border-white/80 bg-white shadow-soft;
+  }
+}
+
+.section-fade {
+  background: radial-gradient(circle at 20% 20%, rgba(89, 158, 246, 0.16), transparent 30%), radial-gradient(circle at 87% 75%, rgba(24, 190, 137, 0.12), transparent 25%);
+}
+
+/* Features float independently; the inner surface scales on hover so transforms do not clash. */
+@keyframes feature-card-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.feature-card {
+  animation: feature-card-float 6s ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+  will-change: transform;
+}
+
+.feature-card__surface {
+  transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 260ms ease;
+}
+
+.feature-card:hover,
+.feature-card:focus-within {
+  animation-play-state: paused;
+  z-index: 30;
+}
+
+.feature-card:hover .feature-card__surface,
+.feature-card:focus-within .feature-card__surface {
+  transform: scale(1.035);
+  box-shadow: 0 24px 55px rgba(20, 65, 145, 0.26);
+}
+
+/* The course card itself floats; it never changes layout dimensions or creates overflow. */
+@keyframes course-card-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.course-card {
+  animation: course-card-float 6.5s ease-in-out infinite;
+  animation-delay: var(--course-float-delay, 0s);
+  will-change: transform;
+}
+
+.course-card:hover,
+.course-card:focus-within {
+  animation-play-state: paused;
+}
+
+/* Infinite horizontal marquee: track holds two duplicated item sets, scrolled exactly -50%. */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover,
+.marquee-track:focus-within {
+  animation-play-state: paused;
+}
+
+/* Placement partners banner scrolls ~3x slower than the default marquee so logos stay legible. */
+.marquee-track-slow {
+  animation: marquee-scroll 80s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-slow:hover,
+.marquee-track-slow:focus-within {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
