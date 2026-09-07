@@ -9,9 +9,9 @@ import studentPortraitRight from '../assets/images/hero/student2.png';
 
 // The site only ships five real programmes, so the rotating word is grounded in an actual
 // outcome taught by one of them rather than a made-up job title.
-const ROTATING_ROLES = ['Ethical Hacker', 'AI Engineer', 'Data Scientist', 'SOC Analyst', 'Prompt Engineer'];
+const ROTATING_ROLES = ['GenAI Engineer', 'Ethical Hacker', 'Data Scientist', 'SOC Analyst', 'Prompt Engineer'];
 
-const BATCH_DATE = 'September 13th, 2026';
+const BATCH_DATE = 'September 16th, 2026';
 
 const advisorWhatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
@@ -54,6 +54,17 @@ export default function HeroSection() {
       <div className="absolute -right-44 -top-48 -z-10 h-[500px] w-[500px] rounded-full border border-royal/[0.08]" />
       <div className="absolute -bottom-16 -left-16 -z-10 h-56 w-56 rounded-full bg-amber-100/70" />
 
+      {/* Soft wave layers along the bottom edge for a bit of movement behind the content. */}
+      <svg
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 w-full sm:h-40"
+        viewBox="0 0 1440 200"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path d="M0,120 C240,180 480,60 720,90 C960,120 1200,190 1440,110 L1440,200 L0,200 Z" fill="#DCE7FF" fillOpacity="0.6" />
+        <path d="M0,150 C260,90 520,180 760,140 C1000,100 1220,170 1440,150 L1440,200 L0,200 Z" fill="#EEF3FF" fillOpacity="0.8" />
+      </svg>
+
       <img
         src={studentPortraitLeft}
         alt="Skill IT Education learner"
@@ -70,11 +81,13 @@ export default function HeroSection() {
       <div className="page-shell relative w-full pb-8 pt-24 sm:pb-10 md:pt-28 lg:py-10">
         <div className="mx-auto max-w-3xl text-center">
           <motion.p className="text-sm font-semibold text-slate-600 sm:text-base" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
-            Cyber Security, AI Engineering &amp; Data Science Training in Hyderabad
+            Cyber Security, AI Engineering &amp; Data Science Upskilling in Madhapur, Hyderabad
           </motion.p>
+        </div>
 
+        <div className="mx-auto mt-3 w-full max-w-6xl px-1 text-center">
           <motion.h1
-            className="mt-3 flex flex-wrap items-baseline justify-center gap-x-2 gap-y-1 font-display text-3xl font-black leading-[1.15] tracking-tight text-ink sm:text-4xl lg:text-5xl"
+            className="flex flex-nowrap items-baseline justify-center gap-x-2 whitespace-nowrap font-display font-black leading-[1.15] tracking-tight text-ink [font-size:clamp(0.85rem,3.8vw,2.5rem)]"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 }}
@@ -95,6 +108,9 @@ export default function HeroSection() {
               </AnimatePresence>
             </span>
           </motion.h1>
+        </div>
+
+        <div className="mx-auto max-w-3xl text-center">
 
           <motion.span
             className="mt-5 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.14em] text-amber-700"
