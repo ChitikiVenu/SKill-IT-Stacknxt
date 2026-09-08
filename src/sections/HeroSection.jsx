@@ -73,23 +73,23 @@ export default function HeroSection() {
         src={studentPortraitLeft}
         alt="Skill IT Education learner"
         style={{ maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)' }}
-        className="pointer-events-none absolute left-1 top-[clamp(2.5rem,11vh,7rem)] w-[clamp(56px,15vw,220px)] object-contain opacity-30 sm:left-3 sm:opacity-60 lg:left-6 lg:opacity-100"
+        className="pointer-events-none absolute left-1 top-[clamp(2.5rem,11vh,7rem)] w-[clamp(48px,9vw,200px)] object-contain opacity-30 sm:left-3 sm:opacity-60 lg:left-6 lg:opacity-100"
       />
       <img
         src={studentPortraitRight}
         alt="Skill IT Education learner"
         style={{ maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)' }}
-        className="pointer-events-none absolute right-1 top-[clamp(2.5rem,11vh,7rem)] w-[clamp(56px,15vw,220px)] object-contain opacity-30 sm:right-3 sm:opacity-60 lg:right-6 lg:opacity-100"
+        className="pointer-events-none absolute right-1 top-[clamp(2.5rem,11vh,7rem)] w-[clamp(48px,9vw,200px)] object-contain opacity-30 sm:right-3 sm:opacity-60 lg:right-6 lg:opacity-100"
       />
 
       <div className="page-shell relative w-full pb-6 pt-20 sm:pb-8 md:pt-24 lg:pt-28">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-3xl px-14 text-center sm:px-16 md:px-20 lg:px-10 xl:px-2">
           <motion.p className="text-sm font-semibold text-slate-600 sm:text-base" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
             Cyber Security, AI Engineering &amp; Data Science Upskilling in Madhapur, Hyderabad
           </motion.p>
         </div>
 
-        <div className="mx-auto mt-3 w-full max-w-6xl px-1 text-center">
+        <div className="mx-auto mt-3 w-full max-w-6xl px-14 text-center sm:px-16 md:px-20 lg:px-10 xl:px-2">
           <motion.h1
             className="flex flex-nowrap items-baseline justify-center gap-x-2 whitespace-nowrap font-display font-black leading-[1.15] tracking-tight text-ink [font-size:clamp(0.85rem,3.8vw,2.5rem)]"
             initial={{ opacity: 0, y: 18 }}
