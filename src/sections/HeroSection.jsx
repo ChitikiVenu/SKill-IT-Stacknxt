@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { CalendarDays, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, CalendarDays, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCourseTrackBySlug } from '../data/coursesData';
@@ -19,7 +19,9 @@ const featuredCourses = [
   {
     slug: 'cyber-security',
     icon: ShieldCheck,
-    accent: 'text-royal bg-royal/10',
+    accent: 'text-royal',
+    badgeClass: 'bg-gradient-to-br from-royal to-sky text-white',
+    buttonClass: 'bg-gradient-to-r from-royal to-sky hover:brightness-110',
     displayTitle: 'Cyber Security',
     blurb: 'Learn the core concepts of cybersecurity, network security, the threat landscape, vulnerabilities, ethical hacking and incident response.',
     checklist: ['Cyber Security & Ethical Hacking', 'Cyber Security Professional', 'Penetration Testing', 'AI in Cyber Security & more...'],
@@ -28,7 +30,9 @@ const featuredCourses = [
   {
     slug: 'ai-engineer',
     icon: Sparkles,
-    accent: 'text-indigo-600 bg-indigo-500/10',
+    accent: 'text-indigo-600',
+    badgeClass: 'bg-gradient-to-br from-indigo-500 to-purple-500 text-white',
+    buttonClass: 'bg-gradient-to-r from-indigo-500 to-purple-500 hover:brightness-110',
     displayTitle: 'AI Engineering',
     blurb: 'Build a strong foundation in Artificial Intelligence with Python, Machine Learning basics, Generative AI, LLMs and real-world projects.',
     checklist: ['Data Science & Python Foundations', 'Machine Learning', 'Advanced Data Science & AI', 'Artificial Intelligence & Deep Learning & more...'],
@@ -156,12 +160,12 @@ export default function HeroSection() {
         </div>
 
         <motion.div className="relative z-10 mx-auto mt-3 grid max-w-4xl gap-3 sm:grid-cols-2" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
-          {cards.map(({ track, icon: Icon, accent, displayTitle, blurb, checklist, buttonLabel }) => (
+          {cards.map(({ track, icon: Icon, accent, badgeClass, buttonClass, displayTitle, blurb, checklist, buttonLabel }) => (
             <div key={track.slug} className="course-card flex flex-col rounded-[24px] border border-slate-100 bg-white p-4 shadow-card">
-              <span className={`grid h-10 w-10 place-items-center rounded-2xl ${accent}`}>
+              <span className={`grid h-10 w-10 place-items-center rounded-2xl ${badgeClass}`}>
                 <Icon size={20} />
               </span>
-              <h3 className={`mt-2 font-display text-lg font-extrabold ${accent.split(' ')[0]}`}>{displayTitle} Course</h3>
+              <h3 className={`mt-2 font-display text-lg font-extrabold ${accent}`}>{displayTitle} Course</h3>
               <p className="mt-1 line-clamp-1 text-sm leading-5 text-muted">{blurb}</p>
               <ul className="mt-2 space-y-1">
                 {checklist.map((item) => (
@@ -170,8 +174,8 @@ export default function HeroSection() {
                   </li>
                 ))}
               </ul>
-              <Link to="/courses" className="primary-button mt-3 w-full">
-                {buttonLabel}
+              <Link to="/courses" className={`primary-button mt-3 w-full ${buttonClass}`}>
+                {buttonLabel} <ArrowRight size={16} />
               </Link>
             </div>
           ))}
