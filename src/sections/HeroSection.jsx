@@ -77,25 +77,28 @@ export default function HeroSection() {
         src={studentPortraitLeft}
         alt="Skill IT Education learner"
         style={{ maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)' }}
-        className="pointer-events-none absolute left-1 top-[clamp(2.5rem,11vh,7rem)] w-[clamp(64px,13vw,220px)] object-contain opacity-50 sm:left-3 sm:opacity-75 lg:left-6 lg:opacity-100"
+        className="pointer-events-none absolute left-1 top-[clamp(2rem,10vh,6.5rem)] w-[clamp(84px,16vw,250px)] object-contain opacity-60 sm:left-2 sm:opacity-85 lg:left-6 lg:opacity-100"
       />
       <img
         src={studentPortraitRight}
         alt="Skill IT Education learner"
         style={{ maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)' }}
-        className="pointer-events-none absolute right-1 top-[clamp(2.5rem,11vh,7rem)] w-[clamp(64px,13vw,220px)] object-contain opacity-50 sm:right-3 sm:opacity-75 lg:right-6 lg:opacity-100"
+        className="pointer-events-none absolute right-1 top-[clamp(2rem,10vh,6.5rem)] w-[clamp(84px,16vw,250px)] object-contain opacity-60 sm:right-2 sm:opacity-85 lg:right-6 lg:opacity-100"
       />
 
       <div className="page-shell relative w-full pb-6 pt-20 sm:pb-8 md:pt-24 lg:pt-28">
-        <div className="mx-auto max-w-3xl px-14 text-center sm:px-16 md:px-20 lg:px-10 xl:px-2">
+        {/* max-width mirrors the student photos' own clamp() width formula (plus their inset
+            and a small gap) instead of fixed per-breakpoint padding, so this text can never
+            render under the photos at any viewport size — see the img elements above. */}
+        <div className="mx-auto text-center" style={{ maxWidth: 'min(48rem, calc(100vw - 2 * (clamp(84px, 16vw, 250px) + 32px)))' }}>
           <motion.p className="text-sm font-semibold text-slate-600 sm:text-base" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
             Cyber Security, AI Engineering &amp; Data Science Upskilling in Madhapur, Hyderabad
           </motion.p>
         </div>
 
-        <div className="mx-auto mt-3 w-full max-w-6xl px-14 text-center sm:px-16 md:px-20 lg:px-10 xl:px-2">
+        <div className="mx-auto mt-3 w-full text-center" style={{ maxWidth: 'min(72rem, calc(100vw - 2 * (clamp(84px, 16vw, 250px) + 32px)))' }}>
           <motion.h1
-            className="flex flex-nowrap items-baseline justify-center gap-x-2 whitespace-nowrap font-display font-black leading-[1.15] tracking-tight text-ink [font-size:clamp(0.85rem,3.8vw,2.5rem)]"
+            className="flex flex-wrap items-baseline justify-center gap-x-2 gap-y-1 font-display font-black leading-[1.15] tracking-tight text-ink [font-size:clamp(1.35rem,3.8vw,2.5rem)]"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 }}
