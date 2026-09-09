@@ -77,13 +77,13 @@ export default function HeroSection() {
         src={studentPortraitLeft}
         alt="Skill IT Education learner"
         style={{ maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)' }}
-        className="pointer-events-none absolute left-1 top-[clamp(2.5rem,11vh,7rem)] w-[clamp(48px,9vw,200px)] object-contain opacity-30 sm:left-3 sm:opacity-60 lg:left-6 lg:opacity-100"
+        className="pointer-events-none absolute left-1 top-[clamp(2.5rem,11vh,7rem)] w-[clamp(64px,13vw,220px)] object-contain opacity-50 sm:left-3 sm:opacity-75 lg:left-6 lg:opacity-100"
       />
       <img
         src={studentPortraitRight}
         alt="Skill IT Education learner"
         style={{ maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)' }}
-        className="pointer-events-none absolute right-1 top-[clamp(2.5rem,11vh,7rem)] w-[clamp(48px,9vw,200px)] object-contain opacity-30 sm:right-3 sm:opacity-60 lg:right-6 lg:opacity-100"
+        className="pointer-events-none absolute right-1 top-[clamp(2.5rem,11vh,7rem)] w-[clamp(64px,13vw,220px)] object-contain opacity-50 sm:right-3 sm:opacity-75 lg:right-6 lg:opacity-100"
       />
 
       <div className="page-shell relative w-full pb-6 pt-20 sm:pb-8 md:pt-24 lg:pt-28">
