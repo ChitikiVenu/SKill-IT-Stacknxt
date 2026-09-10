@@ -23,19 +23,19 @@ export default function VideoSection() {
                     <div className='relative aspect-video max-h-[50svh] overflow-hidden rounded-[24px] bg-slate-900 shadow-card'>
                         <iframe
                             className='h-full w-full'
-                            src='https://www.youtube-nocookie.com/embed/5MgBikgcWnY?rel=0'
-                            title='The Skill IT Education learning approach'
+                            src='https://www.youtube-nocookie.com/embed/NX6qIbflNyY?rel=0'
+                            title='The Truth About Career Progression — Richard Edge, TEDxPCL'
                             loading='lazy'
                             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                             allowFullScreen
                         />
                         <div className='pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between bg-gradient-to-b from-slate-950/45 to-transparent px-5 py-4 text-white sm:px-7'>
                             <span className='flex items-center gap-2 text-sm font-bold'>
-                                <Play size={16} fill='currentColor' /> Skill IT
-                                Education in 90 seconds
+                                <Play size={16} fill='currentColor' /> The truth about
+                                career progression
                             </span>
                             <span className='rounded-full bg-red-600 px-3 py-1.5 text-[10px] font-extrabold tracking-wider'>
-                                YOUTUBE
+                                TEDx
                             </span>
                         </div>
                     </div>
