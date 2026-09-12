@@ -776,3 +776,84 @@ export const getAccreditationBullets = (track) =>
     track.category === 'Security'
         ? securityAccreditationBullets(track.duration)
         : academicAccreditationBullets(track.duration);
+
+// The six specialisations inside the Cyber Security track, surfaced as their own nav
+// submenu + clean SEO URLs. These are focused slices of the single "cyber-security"
+// course above, not separate paid programs — so each links back to it for enrollment.
+export const cyberSecuritySubCourses = [
+    {
+        slug: 'ethical-hacking-penetration-testing-course',
+        title: 'Ethical Hacking and Penetration Testing Course',
+        tagline: 'Think like an attacker so you can defend like a professional.',
+        blurb: 'Learn the same reconnaissance, exploitation and reporting workflow professional penetration testers use to find and responsibly disclose real vulnerabilities before attackers do.',
+        bullets: [
+            'Reconnaissance, scanning and vulnerability assessment methodology',
+            'Exploiting common web, network and system vulnerabilities in lab environments',
+            'Privilege escalation, lateral movement and post-exploitation basics',
+            'Writing a client-ready penetration test report',
+        ],
+    },
+    {
+        slug: 'network-security-course',
+        title: 'Network Security Course',
+        tagline: 'Harden the infrastructure that everything else runs on.',
+        blurb: 'Build a practical understanding of how networks are attacked and defended — firewalls, VPNs, segmentation and monitoring — so you can design infrastructure that resists intrusion.',
+        bullets: [
+            'Firewalls, VPNs, IDS/IPS and network segmentation',
+            'Secure network architecture and zero-trust fundamentals',
+            'Traffic analysis and detecting anomalous network behaviour',
+            'Hardening routers, switches and wireless networks',
+        ],
+    },
+    {
+        slug: 'soc-threat-intelligence-course',
+        title: 'Security Operations Center (SOC) & Threat Intelligence Course',
+        tagline: 'Learn the analyst workflow behind 24/7 threat monitoring.',
+        blurb: 'Step into the role of a SOC analyst — triaging alerts, correlating logs with a SIEM and using threat intelligence to tell a real incident apart from noise.',
+        bullets: [
+            'SIEM fundamentals: log collection, correlation and alerting',
+            'Alert triage, incident escalation and severity classification',
+            'Threat intelligence feeds and mapping activity to MITRE ATT&CK',
+            'Day-in-the-life SOC analyst workflows and playbooks',
+        ],
+    },
+    {
+        slug: 'ai-in-cybersecurity-course',
+        title: 'AI in Cybersecurity Course',
+        tagline: 'Use AI to catch what manual review misses.',
+        blurb: 'Apply machine learning and AI-assisted tooling to anomaly detection, phishing analysis and automated triage — the same techniques modern security teams use to keep up with attack volume.',
+        bullets: [
+            'AI-assisted anomaly detection and behavioural analysis',
+            'Using AI tools to accelerate phishing and malware triage',
+            'Automating repetitive SOC tasks with AI-assisted alerting',
+            'Understanding the limits and risks of AI in a security workflow',
+        ],
+    },
+    {
+        slug: 'mobile-application-security-course',
+        title: 'Mobile Security & Application Security Course',
+        tagline: 'Secure the apps most attackers actually target first.',
+        blurb: 'Assess Android and iOS apps, and the web/API layer behind them, for the vulnerabilities that show up again and again in real mobile and application security engagements.',
+        bullets: [
+            'OWASP Mobile & Web Top 10 vulnerability classes',
+            'Static and dynamic analysis of Android and iOS applications',
+            'API security testing: authentication, authorization and data exposure',
+            'Secure coding and remediation guidance for developers',
+        ],
+    },
+    {
+        slug: 'digital-forensics-incident-response-course',
+        title: 'Digital Forensics and Incident Response (DFIR) Course',
+        tagline: 'Learn what happens after the alert fires.',
+        blurb: 'Build the investigative skills to reconstruct what happened during a breach — evidence handling, disk and memory forensics, and running an incident response engagement end to end.',
+        bullets: [
+            'Evidence handling, chain of custody and forensic imaging',
+            'Disk, memory and log forensics fundamentals',
+            'Incident response lifecycle: containment, eradication, recovery',
+            'Writing findings for technical and non-technical stakeholders',
+        ],
+    },
+];
+
+export const getCyberSecuritySubCourseBySlug = (slug) =>
+    cyberSecuritySubCourses.find((course) => course.slug === slug);

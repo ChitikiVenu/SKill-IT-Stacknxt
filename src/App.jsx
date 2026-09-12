@@ -16,6 +16,7 @@ const CertificationsPage = lazy(() => import('./pages/CertificationsPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const CourseCatalogPage = lazy(() => import('./pages/CourseCatalogPage'));
 const CourseDetailPage = lazy(() => import('./pages/CourseDetailPage'));
+const CyberSecuritySubCoursePage = lazy(() => import('./pages/CyberSecuritySubCoursePage'));
 const InsightsPage = lazy(() => import('./pages/InsightsPage'));
 const InsightPostPage = lazy(() => import('./pages/InsightPostPage'));
 const MockInterviewsPage = lazy(() => import('./pages/MockInterviewsPage'));
@@ -40,6 +41,7 @@ export default function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/courses" element={<CourseCatalogPage />} />
+            <Route path="/courses/cyber-security/:subSlug" element={<CyberSecuritySubCoursePage />} />
             <Route path="/courses/:slug" element={<CourseDetailPage />} />
             <Route path="/brochures" element={<BrochureCenterPage />} />
             <Route path="/mock-interviews" element={<MockInterviewsPage />} />
