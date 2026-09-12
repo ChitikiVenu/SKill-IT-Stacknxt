@@ -101,7 +101,7 @@ export default function CoursesMegaMenu({onNavigate}) {
                             >
                                 {row}
                                 <div className='invisible absolute left-full top-0 z-50 pl-2 opacity-0 transition duration-150 group-hover/cyber:visible group-hover/cyber:opacity-100'>
-                                    <div className='w-[320px] overflow-hidden rounded-3xl border border-slate-100 bg-white p-2 shadow-2xl shadow-royal/10'>
+                                    <div className='w-[360px] rounded-3xl border border-slate-100 bg-white p-2 shadow-2xl shadow-royal/10'>
                                         {cyberSecuritySubCourses.map((course) => (
                                             <Link
                                                 key={course.slug}
@@ -109,7 +109,7 @@ export default function CoursesMegaMenu({onNavigate}) {
                                                 onClick={onNavigate}
                                                 className='group/item flex items-start gap-2 rounded-2xl p-3 text-left transition hover:bg-mist'
                                             >
-                                                <span className='min-w-0 flex-1 truncate text-sm font-bold text-ink transition group-hover/item:text-royal'>
+                                                <span className='min-w-0 flex-1 text-sm font-bold leading-snug text-ink transition group-hover/item:text-royal'>
                                                     {course.title}
                                                 </span>
                                                 <ChevronRight
