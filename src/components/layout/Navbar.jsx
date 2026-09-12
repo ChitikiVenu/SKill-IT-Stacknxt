@@ -1,8 +1,9 @@
 import {AnimatePresence} from 'framer-motion';
-import {LogOut, Menu, UserRound, X} from 'lucide-react';
+import {ChevronDown, ChevronRight, LogOut, Menu, UserRound, X} from 'lucide-react';
 import {useRef, useState} from 'react';
 import {Link, NavLink, useLocation} from 'react-router-dom';
 import {useAuth} from '../../contexts/AuthContext';
+import {courseTracks, cyberSecuritySubCourses} from '../../data/coursesData';
 import {WHATSAPP_MESSAGE, WHATSAPP_NUMBER} from '../common/FloatingWhatsAppButton';
 import LogoutConfirmModal from '../common/LogoutConfirmModal';
 import CoursesMegaMenu from './CoursesMegaMenu';
@@ -36,6 +37,8 @@ export default function Navbar({onLogin}) {
     const [isOpen, setIsOpen] = useState(false);
     const [logoutConfirmOpen, setLogoutConfirmOpen] = useState(false);
     const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+    const [mobileCoursesOpen, setMobileCoursesOpen] = useState(false);
+    const [mobileCyberOpen, setMobileCyberOpen] = useState(false);
     const megaMenuCloseTimer = useRef(null);
     const {user, signOut} = useAuth();
 
@@ -52,7 +55,11 @@ export default function Navbar({onLogin}) {
     const {pathname, hash} = useLocation();
     const isHome = pathname === '/';
     const desktopClass = desktopClassSolid;
-    const closeMenu = () => setIsOpen(false);
+    const closeMenu = () => {
+        setIsOpen(false);
+        setMobileCoursesOpen(false);
+        setMobileCyberOpen(false);
+    };
     const userName =
         user?.user_metadata?.full_name ||
         user?.email?.split('@')[0] ||
@@ -225,7 +232,82 @@ export default function Navbar({onLogin}) {
 
             {isOpen && (
                 <div className='mx-auto mt-2 max-w-[1344px] rounded-2xl border border-white bg-white p-3 shadow-soft xl:hidden'>
-                    {links.map((link) => renderLink(link, 'mobile', closeMenu))}
+                    {links.map((link) =>
+                        link.to === '/courses' ? (
+                            <div key={link.to}>
+                                <div className='flex items-center'>
+                                    <div className='flex-1'>{renderLink(link, 'mobile', closeMenu)}</div>
+                                    <button
+                                        onClick={() => setMobileCoursesOpen((open) => !open)}
+                                        aria-expanded={mobileCoursesOpen}
+                                        aria-label='Toggle course categories'
+                                        className='grid h-10 w-10 shrink-0 place-items-center rounded-xl text-slate-500 hover:bg-mist hover:text-royal'
+                                    >
+                                        <ChevronDown
+                                            size={18}
+                                            className={`transition-transform duration-200 ${mobileCoursesOpen ? 'rotate-180' : ''}`}
+                                        />
+                                    </button>
+                                </div>
+                                {mobileCoursesOpen && (
+                                    <div className='ml-3 mt-1 space-y-1 border-l border-slate-100 pl-3'>
+                                        {courseTracks.map((track) =>
+                                            track.slug === 'cyber-security' ? (
+                                                <div key={track.slug}>
+                                                    <div className='flex items-center'>
+                                                        <Link
+                                                            to={`/courses/${track.slug}`}
+                                                            onClick={closeMenu}
+                                                            className='flex-1 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-mist'
+                                                        >
+                                                            {track.title}
+                                                        </Link>
+                                                        <button
+                                                            onClick={() => setMobileCyberOpen((open) => !open)}
+                                                            aria-expanded={mobileCyberOpen}
+                                                            aria-label='Toggle Cyber Security specialisations'
+                                                            className='grid h-9 w-9 shrink-0 place-items-center rounded-xl text-slate-500 hover:bg-mist hover:text-royal'
+                                                        >
+                                                            <ChevronDown
+                                                                size={16}
+                                                                className={`transition-transform duration-200 ${mobileCyberOpen ? 'rotate-180' : ''}`}
+                                                            />
+                                                        </button>
+                                                    </div>
+                                                    {mobileCyberOpen && (
+                                                        <div className='ml-3 space-y-0.5 border-l border-slate-100 pl-3'>
+                                                            {cyberSecuritySubCourses.map((course) => (
+                                                                <Link
+                                                                    key={course.slug}
+                                                                    to={`/courses/cyber-security/${course.slug}`}
+                                                                    onClick={closeMenu}
+                                                                    className='flex items-center gap-1.5 rounded-xl px-3 py-2 text-[13px] font-semibold text-slate-600 hover:bg-mist hover:text-royal'
+                                                                >
+                                                                    <ChevronRight size={13} className='shrink-0 text-slate-300' />
+                                                                    {course.title}
+                                                                </Link>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            ) : (
+                                                <Link
+                                                    key={track.slug}
+                                                    to={`/courses/${track.slug}`}
+                                                    onClick={closeMenu}
+                                                    className='block rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-mist'
+                                                >
+                                                    {track.title}
+                                                </Link>
+                                            ),
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            renderLink(link, 'mobile', closeMenu)
+                        ),
+                    )}
                     <div className='mt-2 flex gap-2 border-t border-slate-100 pt-3'>
                         {user ? (
                             <button
