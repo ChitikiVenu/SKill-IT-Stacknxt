@@ -1,26 +1,46 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, ChevronRight } from 'lucide-react';
+import { CheckCircle2, ChevronRight } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import Seo from '../components/common/Seo';
+import SpecializationJourney from '../components/course/SpecializationJourney';
+import {
+  achievementSnapshotStages,
+  getCyberSecurityJourneyBySlug,
+  jobReadyProfileSteps,
+  learningFlowStages,
+  projectPresentationFlow,
+} from '../data/cyberSecurityJourneys';
 import { getCourseTrackBySlug, getCyberSecuritySubCourseBySlug } from '../data/coursesData';
+import { breadcrumbJsonLd, faqPageJsonLd } from '../data/structuredData';
 import NotFoundPage from './NotFoundPage';
 
 export default function CyberSecuritySubCoursePage() {
   const { subSlug } = useParams();
   const course = getCyberSecuritySubCourseBySlug(subSlug);
   const parentTrack = getCourseTrackBySlug('cyber-security');
+  const journey = getCyberSecurityJourneyBySlug(subSlug);
 
-  if (!course || !parentTrack) return <NotFoundPage />;
+  if (!course || !parentTrack || !journey) return <NotFoundPage />;
+
+  const path = `/courses/cyber-security/${course.slug}`;
 
   return (
     <main>
       <Seo
-        title={course.title}
-        description={course.blurb}
-        path={`/courses/cyber-security/${course.slug}`}
+        title={journey.metaTitle}
+        description={journey.metaDescription}
+        path={path}
+        jsonLd={[
+          breadcrumbJsonLd([
+            { name: 'Courses', path: '/courses' },
+            { name: 'Cyber Security', path: '/courses/cyber-security' },
+            { name: course.title, path },
+          ]),
+          faqPageJsonLd(journey.faqs),
+        ]}
       />
 
-      <div className={`bg-gradient-to-br ${parentTrack.tint} px-5 pb-12 pt-28 text-white sm:px-8 sm:pt-32`}>
+      <div className={`bg-gradient-to-br ${journey.tint} px-5 pb-12 pt-28 text-white sm:px-8 sm:pt-32`}>
         <motion.div
           className="page-shell"
           initial={{ opacity: 0, y: 16 }}
@@ -35,7 +55,7 @@ export default function CyberSecuritySubCoursePage() {
             <span className="text-white">{course.title}</span>
           </nav>
           <span className="mt-4 inline-block rounded-full bg-white/20 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wide">
-            Cyber Security specialisation
+            Cyber Security specialisation · Hyderabad
           </span>
           <h1 className="mt-4 max-w-3xl font-display text-3xl font-black leading-tight sm:text-5xl">
             {course.title}
@@ -44,11 +64,12 @@ export default function CyberSecuritySubCoursePage() {
         </motion.div>
       </div>
 
-      <div className="page-shell space-y-10 py-12">
+      <div className="page-shell">
         <motion.section
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
+          className="pt-12"
         >
           <span className="eyebrow">What you'll learn</span>
           <p className="mt-4 max-w-3xl text-base leading-7 text-muted">{course.blurb}</p>
@@ -62,26 +83,15 @@ export default function CyberSecuritySubCoursePage() {
           </ul>
         </motion.section>
 
-        <motion.section
-          className="rounded-[28px] border border-blue-100 bg-mist p-6 sm:p-10"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <h2 className="font-display text-2xl font-black text-ink sm:text-3xl">
-            Part of our full {parentTrack.title} programme
-          </h2>
-          <p className="mt-2 max-w-2xl text-base leading-6 text-muted">
-            This specialisation is taught as part of the {parentTrack.duration} {parentTrack.title} course — see the full
-            curriculum, pricing and batch dates on the main course page.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link to="/courses/cyber-security" className="primary-button">
-              View full Cyber Security programme <ArrowRight size={16} />
-            </Link>
-            <Link to="/contact" className="secondary-button">Talk to an advisor</Link>
-          </div>
-        </motion.section>
+        <SpecializationJourney
+          course={course}
+          journey={journey}
+          parentTrack={parentTrack}
+          learningFlowStages={learningFlowStages}
+          jobReadyProfileSteps={jobReadyProfileSteps}
+          projectPresentationFlow={projectPresentationFlow}
+          achievementSnapshotStages={achievementSnapshotStages}
+        />
       </div>
     </main>
   );
