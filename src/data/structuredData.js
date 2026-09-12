@@ -109,3 +109,19 @@ export function faqPageJsonLd(faqs) {
         })),
     };
 }
+
+// `crumbs` is an ordered array of { name, path }, root first — used for the Cyber Security
+// specialisation pages (Courses > Cyber Security > this page) so Google can render the
+// breadcrumb trail directly in search results instead of just the raw URL.
+export function breadcrumbJsonLd(crumbs) {
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: crumbs.map((crumb, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: crumb.name,
+            item: `${SITE_URL}${crumb.path}`,
+        })),
+    };
+}
