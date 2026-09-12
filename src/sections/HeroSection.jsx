@@ -77,26 +77,26 @@ export default function HeroSection() {
         src={studentPortraitLeft}
         alt="Skill IT Education learner"
         style={{ maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)' }}
-        className="pointer-events-none absolute left-1 top-[clamp(2rem,10vh,6.5rem)] w-[clamp(84px,16vw,250px)] object-contain opacity-60 sm:left-2 sm:opacity-85 lg:left-6 lg:opacity-100"
+        className="pointer-events-none absolute left-1 top-[clamp(5.5rem,15vh,8.5rem)] w-[clamp(100px,19vw,280px)] object-contain opacity-70 sm:left-2 sm:opacity-90 lg:left-6 lg:opacity-100"
       />
       <img
         src={studentPortraitRight}
         alt="Skill IT Education learner"
         style={{ maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)' }}
-        className="pointer-events-none absolute right-1 top-[clamp(2rem,10vh,6.5rem)] w-[clamp(84px,16vw,250px)] object-contain opacity-60 sm:right-2 sm:opacity-85 lg:right-6 lg:opacity-100"
+        className="pointer-events-none absolute right-1 top-[clamp(5.5rem,15vh,8.5rem)] w-[clamp(100px,19vw,280px)] object-contain opacity-70 sm:right-2 sm:opacity-90 lg:right-6 lg:opacity-100"
       />
 
       <div className="page-shell relative w-full pb-6 pt-20 sm:pb-8 md:pt-24 lg:pt-28">
         {/* max-width mirrors the student photos' own clamp() width formula (plus their inset
             and a small gap) instead of fixed per-breakpoint padding, so this text can never
             render under the photos at any viewport size — see the img elements above. */}
-        <div className="mx-auto text-center" style={{ maxWidth: 'min(48rem, calc(100vw - 2 * (clamp(84px, 16vw, 250px) + 32px)))' }}>
+        <div className="mx-auto text-center" style={{ maxWidth: 'min(48rem, calc(100vw - 2 * (clamp(100px, 19vw, 280px) + 32px)))' }}>
           <motion.p className="text-sm font-semibold text-slate-600 sm:text-base" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
             Cyber Security, AI Engineering &amp; Data Science Upskilling in Madhapur, Hyderabad
           </motion.p>
         </div>
 
-        <div className="mx-auto mt-3 w-full text-center" style={{ maxWidth: 'min(72rem, calc(100vw - 2 * (clamp(84px, 16vw, 250px) + 32px)))' }}>
+        <div className="mx-auto mt-3 w-full text-center" style={{ maxWidth: 'min(72rem, calc(100vw - 2 * (clamp(100px, 19vw, 280px) + 32px)))' }}>
           <motion.h1
             className="flex flex-wrap items-baseline justify-center gap-x-2 gap-y-1 font-display font-black leading-[1.15] tracking-tight text-ink [font-size:clamp(1.35rem,3.8vw,2.5rem)]"
             initial={{ opacity: 0, y: 18 }}
@@ -162,22 +162,25 @@ export default function HeroSection() {
           </motion.p>
         </div>
 
-        <motion.div className="relative z-10 mx-auto mt-3 grid max-w-4xl gap-3 sm:grid-cols-2" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
+        <motion.div className="relative z-10 mx-auto mt-3 grid max-w-4xl gap-4 sm:grid-cols-2" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
           {cards.map(({ track, icon: Icon, accent, badgeClass, buttonClass, displayTitle, blurb, checklist, buttonLabel }) => (
-            <div key={track.slug} className="course-card flex flex-col rounded-[24px] border border-slate-100 bg-white p-4 shadow-card">
-              <span className={`grid h-10 w-10 place-items-center rounded-2xl ${badgeClass}`}>
-                <Icon size={20} />
+            <div
+              key={track.slug}
+              className="course-card flex flex-col rounded-[24px] border border-slate-100 bg-white p-5 shadow-card transition-all duration-200 hover:-translate-y-1 hover:shadow-xl sm:p-6"
+            >
+              <span className={`grid h-12 w-12 place-items-center rounded-2xl shadow-sm ${badgeClass}`}>
+                <Icon size={22} />
               </span>
-              <h3 className={`mt-2 font-display text-lg font-extrabold ${accent}`}>{displayTitle} Course</h3>
+              <h3 className={`mt-3 font-display text-xl font-extrabold ${accent}`}>{displayTitle} Course</h3>
               <p className="mt-1 line-clamp-1 text-sm leading-5 text-muted">{blurb}</p>
-              <ul className="mt-2 space-y-1">
+              <ul className="mt-3 space-y-1.5">
                 {checklist.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm leading-5 text-slate-700">
                     <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-mint" /> {item}
                   </li>
                 ))}
               </ul>
-              <Link to="/courses" className={`primary-button mt-3 w-full ${buttonClass}`}>
+              <Link to="/courses" className={`primary-button mt-4 w-full ${buttonClass}`}>
                 {buttonLabel} <ArrowRight size={16} />
               </Link>
             </div>
