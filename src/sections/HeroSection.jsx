@@ -77,28 +77,36 @@ export default function HeroSection() {
         src={studentPortraitLeft}
         alt="Skill IT Education learner"
         style={{ maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)' }}
-        className="pointer-events-none absolute left-1 top-[clamp(5.5rem,15vh,8.5rem)] w-[clamp(100px,19vw,280px)] object-contain opacity-70 sm:left-2 sm:opacity-90 lg:left-6 lg:opacity-100"
+        className="pointer-events-none absolute left-1 top-[clamp(5.5rem,15vh,8.5rem)] w-[clamp(64px,17vw,280px)] object-contain opacity-70 sm:left-2 sm:opacity-90 lg:left-6 lg:opacity-100"
       />
       <img
         src={studentPortraitRight}
         alt="Skill IT Education learner"
         style={{ maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)' }}
-        className="pointer-events-none absolute right-1 top-[clamp(5.5rem,15vh,8.5rem)] w-[clamp(100px,19vw,280px)] object-contain opacity-70 sm:right-2 sm:opacity-90 lg:right-6 lg:opacity-100"
+        className="pointer-events-none absolute right-1 top-[clamp(5.5rem,15vh,8.5rem)] w-[clamp(64px,17vw,280px)] object-contain opacity-70 sm:right-2 sm:opacity-90 lg:right-6 lg:opacity-100"
       />
 
       <div className="page-shell relative w-full pb-6 pt-20 sm:pb-8 md:pt-24 lg:pt-28">
         {/* max-width mirrors the student photos' own clamp() width formula (plus their inset
             and a small gap) instead of fixed per-breakpoint padding, so this text can never
             render under the photos at any viewport size — see the img elements above. */}
-        <div className="mx-auto text-center" style={{ maxWidth: 'min(48rem, calc(100vw - 2 * (clamp(100px, 19vw, 280px) + 32px)))' }}>
+        <div className="mx-auto text-center" style={{ maxWidth: 'min(48rem, calc(100vw - 2 * (clamp(64px, 17vw, 280px) + clamp(28px, 4.2vw, 40px))))' }}>
           <motion.p className="text-sm font-semibold text-slate-600 sm:text-base" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
             Cyber Security, AI Engineering &amp; Data Science Upskilling in Madhapur, Hyderabad
           </motion.p>
         </div>
 
-        <div className="mx-auto mt-3 w-full text-center" style={{ maxWidth: 'min(72rem, calc(100vw - 2 * (clamp(100px, 19vw, 280px) + 32px)))' }}>
+        {/* container-type: inline-size makes the headline's font-size (set in cqw below) track
+            this box's own resolved width — which already has the photo clearance baked into its
+            max-width formula — instead of the raw viewport. Sizing off plain vw here would drift
+            out of sync with that clearance math at some breakpoints and either wrap the line or
+            spill text under the photos; cqw keeps the single line and the fit airtight together. */}
+        <div
+          className="mx-auto mt-3 w-full text-center"
+          style={{ maxWidth: 'min(72rem, calc(100vw - 2 * (clamp(64px, 17vw, 280px) + clamp(28px, 4.2vw, 40px))))', containerType: 'inline-size' }}
+        >
           <motion.h1
-            className="flex flex-wrap items-baseline justify-center gap-x-2 gap-y-1 font-display font-black leading-[1.15] tracking-tight text-ink [font-size:clamp(1.35rem,3.8vw,2.5rem)]"
+            className="flex flex-nowrap items-baseline justify-center gap-x-1.5 whitespace-nowrap font-display font-black leading-[1.15] tracking-tight text-ink [font-size:clamp(0.55rem,5cqw,2.5rem)]"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 }}
