@@ -13,8 +13,15 @@ import { downloadModuleBrochure } from '../lib/brochurePdf';
 import ReviewsSection from '../sections/ReviewsSection';
 import SuccessStoriesSection from '../sections/SuccessStoriesSection';
 import NotFoundPage from './NotFoundPage';
+import cyberSecurityHeroImage from '../assets/images/courses/cyber-security-hero.png';
 
 const LEAD_CAPTURED_KEY = 'isLeadCaptured';
+
+// Only the Cyber Security track has a hero illustration today — keyed by slug so adding
+// artwork for another track later is a one-line addition here, not a template change.
+const HERO_IMAGES = {
+  'cyber-security': cyberSecurityHeroImage,
+};
 
 export default function CourseDetailPage() {
   const { slug } = useParams();
@@ -55,30 +62,47 @@ export default function CourseDetailPage() {
         jsonLd={[courseJsonLd(track), faqPageJsonLd(track.faqs)]}
       />
 
-      <div className={`bg-gradient-to-br ${track.tint} px-5 pb-12 pt-28 text-white sm:px-8 sm:pt-32`}>
-        <motion.div
-          className="page-shell"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: 'easeOut' }}
-        >
-          <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wide">
-            {track.category} pathway
-          </span>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-black leading-tight sm:text-6xl">
-            {track.hero.headline}
-          </h1>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-white/90 sm:text-lg">{track.hero.body}</p>
-          <div className="mt-6 flex flex-wrap gap-3 text-sm font-bold">
-            <span className="flex items-center gap-2 rounded-full bg-white/15 px-3 py-2"><Clock size={15} /> {track.duration} · {track.hours}</span>
-            <span className="flex items-center gap-2 rounded-full bg-white/15 px-3 py-2"><Layers size={15} /> {track.level} level</span>
-            <span className="flex items-center gap-2 rounded-full bg-white/15 px-3 py-2"><GraduationCap size={15} /> Live Online · Classroom</span>
-            <span className="flex items-center gap-2 rounded-full bg-white/15 px-3 py-2">
-              <span className="flex text-amber-300">{Array.from({ length: 5 }).map((_, star) => <Star key={star} size={13} fill="currentColor" />)}</span>
-              Rated by our learners
+      <div className={`overflow-hidden bg-gradient-to-br ${track.tint} px-5 pb-12 pt-28 text-white sm:px-8 sm:pt-32`}>
+        <div className="page-shell flex flex-col items-center gap-8 lg:flex-row lg:justify-between lg:gap-10">
+          <motion.div
+            className="min-w-0 lg:flex-1"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: 'easeOut' }}
+          >
+            <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wide">
+              {track.category} pathway
             </span>
-          </div>
-        </motion.div>
+            <h1 className="mt-4 max-w-3xl font-display text-4xl font-black leading-tight sm:text-6xl">
+              {track.hero.headline}
+            </h1>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-white/90 sm:text-lg">{track.hero.body}</p>
+            <div className="mt-6 flex flex-wrap gap-3 text-sm font-bold">
+              <span className="flex items-center gap-2 rounded-full bg-white/15 px-3 py-2"><Clock size={15} /> {track.duration} · {track.hours}</span>
+              <span className="flex items-center gap-2 rounded-full bg-white/15 px-3 py-2"><Layers size={15} /> {track.level} level</span>
+              <span className="flex items-center gap-2 rounded-full bg-white/15 px-3 py-2"><GraduationCap size={15} /> Live Online · Classroom</span>
+              <span className="flex items-center gap-2 rounded-full bg-white/15 px-3 py-2">
+                <span className="flex text-amber-300">{Array.from({ length: 5 }).map((_, star) => <Star key={star} size={13} fill="currentColor" />)}</span>
+                Rated by our learners
+              </span>
+            </div>
+          </motion.div>
+
+          {HERO_IMAGES[track.slug] && (
+            <motion.div
+              className="w-full max-w-md shrink-0 lg:w-[420px]"
+              initial={{ opacity: 0, y: 16, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
+            >
+              <img
+                src={HERO_IMAGES[track.slug]}
+                alt={`Student learning ${track.title} at Skill IT Education`}
+                className="w-full drop-shadow-2xl"
+              />
+            </motion.div>
+          )}
+        </div>
       </div>
 
       <div className="page-shell -mt-8 pb-8">
