@@ -114,7 +114,7 @@ export const alumni = [
         company: 'Ezee.ai, Bengaluru',
         quote: 'I loved the hands-on projects. Every concept was explained with practical examples and I graduated with a portfolio.',
         image: prajwalalumini,
-        courses: ['AI Engineer', 'SOC Analyst'],
+        courses: ['AI & ML', 'SOC Analyst'],
     },
     {
         name: 'Rajasekhar Yarraguntla',
@@ -122,7 +122,7 @@ export const alumni = [
         company: 'Swiss Re, Hyderabad',
         quote: 'The curriculum is industry-focused and constantly updated. The career guidance helped me secure a role faster.',
         image: rajasekharalumini,
-        courses: ['AI Engineer', 'Generative AI'],
+        courses: ['AI & ML', 'Generative AI'],
     },
     {
         name: 'Narasimha Reddy Konireddy',
@@ -130,7 +130,7 @@ export const alumni = [
         company: 'TCS, Hyderabad',
         quote: 'The hands-on learning experience helped me build practical skills and gave me the confidence to take the next step in my career.',
         image: narasimhaalumini,
-        courses: ['AI Engineer', 'Generative AI'],
+        courses: ['AI & ML', 'Generative AI'],
     },
     {
         name: 'Vineeth Gadupute',
@@ -162,7 +162,7 @@ export const certificates = [
     },
     {
         id: 'certificate-ai',
-        course: 'AI Engineer',
+        course: 'AI & ML',
         credential: 'Applied Learning Certificate',
         recipient: 'Karthik Rao',
         code: 'RT-AI-2026',
@@ -247,7 +247,7 @@ export const faqs = [
     {
         id: 'faq-non-it',
         question: 'Can I switch into tech from a non-IT background?',
-        answer: 'Yes. Cyber Security, SOC Analyst, and Data Science are built to take non-IT learners from zero, and our AI Engineer and Generative AI tracks assume only working Python, taught from the fundamentals up where needed.',
+        answer: 'Yes. Cyber Security, SOC Analyst, and Data Science are built to take non-IT learners from zero, and our AI & ML and Generative AI tracks assume only working Python, taught from the fundamentals up where needed.',
     },
     {
         id: 'faq-placement',

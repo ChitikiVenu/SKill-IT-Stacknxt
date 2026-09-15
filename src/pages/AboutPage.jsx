@@ -16,7 +16,7 @@ export default function AboutPage() {
         <main>
             <Seo
                 title='About Us'
-                description='Skill IT Education is a Hyderabad-based EdTech platform offering job-ready Cyber Security, AI Engineer, Data Science, SOC Analyst, and Generative AI programmes with live mentorship, hands-on labs, and dedicated placement support.'
+                description='Skill IT Education is a Hyderabad-based EdTech platform offering job-ready Cyber Security, AI & ML, Data Science, SOC Analyst, and Generative AI programmes with live mentorship, hands-on labs, and dedicated placement support.'
                 path='/about'
             />
             <div className='page-shell pt-12 text-center sm:pt-16'>
@@ -26,7 +26,7 @@ export default function AboutPage() {
                 </h1>
                 <p className='mx-auto mt-4 max-w-2xl text-base leading-7 text-muted'>
                     Skill IT Education is a Hyderabad-based EdTech platform
-                    offering job-ready Cyber Security, AI Engineer, Data
+                    offering job-ready Cyber Security, AI & ML, Data
                     Science, SOC Analyst, and Generative AI programmes with live
                     mentorship, hands-on labs, and dedicated placement support.
                 </p>

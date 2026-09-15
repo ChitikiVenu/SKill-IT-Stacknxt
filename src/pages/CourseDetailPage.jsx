@@ -1,13 +1,19 @@
 import { motion } from 'framer-motion';
-import { CheckCircle2, ChevronDown, Clock, Download, GraduationCap, Layers, Star } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ChevronDown, Clock, Download, GraduationCap, Layers, Star } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Seo from '../components/common/Seo';
 import CourseCertificate from '../components/course/CourseCertificate';
 import EnrollmentModal from '../components/course/EnrollmentModal';
 import LeadModal from '../components/course/LeadModal';
 import { useBrochureGate } from '../contexts/BrochureGateContext';
-import { getAccreditationBullets, getCourseTrackBySlug, getDeliveryPricingOptions } from '../data/coursesData';
+import {
+  aiMlSubCourses,
+  cyberSecuritySubCourses,
+  getAccreditationBullets,
+  getCourseTrackBySlug,
+  getDeliveryPricingOptions,
+} from '../data/coursesData';
 import { courseJsonLd, faqPageJsonLd } from '../data/structuredData';
 import { downloadModuleBrochure } from '../lib/brochurePdf';
 import ReviewsSection from '../sections/ReviewsSection';
@@ -21,6 +27,13 @@ const LEAD_CAPTURED_KEY = 'isLeadCaptured';
 // artwork for another track later is a one-line addition here, not a template change.
 const HERO_IMAGES = {
   'cyber-security': cyberSecurityHeroImage,
+};
+
+// Tracks with dedicated specialisation/module sub-course pages, keyed by slug. Any track absent
+// from this map simply skips the specialisations showcase section below.
+const SUB_COURSES = {
+  'cyber-security': cyberSecuritySubCourses,
+  'ai-ml': aiMlSubCourses,
 };
 
 export default function CourseDetailPage() {
@@ -178,6 +191,35 @@ export default function CourseDetailPage() {
             ))}
           </ul>
         </motion.section>
+
+        {SUB_COURSES[track.slug] && (
+          <motion.section
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <span className="eyebrow">Specialisations</span>
+            <h2 className="mt-4 font-display text-3xl font-black text-ink sm:text-4xl">Explore every module in this programme</h2>
+            <p className="mt-3 max-w-3xl text-base leading-7 text-muted">
+              Each module below is its own deep-dive course page — full curriculum, projects, skills, career roles and salary bands.
+            </p>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {SUB_COURSES[track.slug].map((sub) => (
+                <Link
+                  key={sub.slug}
+                  to={`/courses/${track.slug}/${sub.slug}`}
+                  className="group flex flex-col rounded-3xl border border-slate-100 bg-white p-5 shadow-card transition hover:border-blue-100 hover:shadow-lift"
+                >
+                  <h3 className="font-display text-base font-extrabold text-ink transition group-hover:text-royal">{sub.title}</h3>
+                  <p className="mt-1.5 text-sm leading-6 text-muted">{sub.tagline}</p>
+                  <span className="mt-4 flex items-center gap-1.5 text-sm font-bold text-royal">
+                    View module <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </motion.section>
+        )}
 
         <motion.section
           initial={{ opacity: 0, y: 24 }}

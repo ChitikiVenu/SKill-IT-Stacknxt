@@ -28,15 +28,15 @@ const featuredCourses = [
     buttonLabel: 'Explore Full Cyber Security Curriculum',
   },
   {
-    slug: 'ai-engineer',
+    slug: 'ai-ml',
     icon: Sparkles,
     accent: 'text-indigo-600',
     badgeClass: 'bg-gradient-to-br from-indigo-500 to-purple-500 text-white',
     buttonClass: 'bg-gradient-to-r from-indigo-500 to-purple-500 hover:brightness-110',
-    displayTitle: 'AI Engineering',
+    displayTitle: 'AI & ML',
     blurb: 'Build a strong foundation in Artificial Intelligence with Python, Machine Learning basics, Generative AI, LLMs and real-world projects.',
     checklist: ['Data Science & Python Foundations', 'Machine Learning', 'Advanced Data Science & AI', 'Artificial Intelligence & Deep Learning & more...'],
-    buttonLabel: 'Explore AI Engineering Curriculum',
+    buttonLabel: 'Explore AI & ML Curriculum',
   },
 ];
 
@@ -92,7 +92,7 @@ export default function HeroSection() {
             render under the photos at any viewport size — see the img elements above. */}
         <div className="mx-auto text-center" style={{ maxWidth: 'min(48rem, calc(100vw - 2 * (clamp(64px, 17vw, 280px) + clamp(28px, 4.2vw, 40px))))' }}>
           <motion.p className="text-sm font-semibold text-slate-600 sm:text-base" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
-            Cyber Security, AI Engineering &amp; Data Science Upskilling in Madhapur, Hyderabad
+            Cyber Security, AI &amp; ML &amp; Data Science Upskilling in Madhapur, Hyderabad
           </motion.p>
         </div>
 

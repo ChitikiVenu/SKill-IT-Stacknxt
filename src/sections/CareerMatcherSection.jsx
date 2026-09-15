@@ -10,7 +10,7 @@ const questions = [
     prompt: 'What pulls you in?',
     options: [
       { label: 'Hunting vulnerabilities & ethical hacking', scores: { 'cyber-security': 2 } },
-      { label: 'Teaching machines to think', scores: { 'ai-engineer': 2, 'generative-ai': 1 } },
+      { label: 'Teaching machines to think', scores: { 'ai-ml': 2, 'generative-ai': 1 } },
       { label: 'Numbers, dashboards & patterns', scores: { 'data-science': 2 } },
       { label: 'Watching for real-time threats', scores: { 'soc-analyst': 2 } },
     ],
@@ -20,7 +20,7 @@ const questions = [
     prompt: 'How do you like to work?',
     options: [
       { label: 'Hands-on labs & simulated attacks', scores: { 'cyber-security': 1, 'soc-analyst': 1 } },
-      { label: 'Building & experimenting with models', scores: { 'ai-engineer': 1, 'generative-ai': 1 } },
+      { label: 'Building & experimenting with models', scores: { 'ai-ml': 1, 'generative-ai': 1 } },
       { label: 'Digging through datasets for a story', scores: { 'data-science': 2 } },
       { label: 'Monitoring alerts and reacting fast', scores: { 'soc-analyst': 2 } },
     ],
@@ -31,7 +31,7 @@ const questions = [
     options: [
       { label: 'Build a home-lab pentest range', scores: { 'cyber-security': 2 } },
       { label: 'Fine-tune a chatbot', scores: { 'generative-ai': 2 } },
-      { label: 'Train a predictive model', scores: { 'ai-engineer': 1, 'data-science': 1 } },
+      { label: 'Train a predictive model', scores: { 'ai-ml': 1, 'data-science': 1 } },
       { label: 'Set up a live SOC monitoring dashboard', scores: { 'soc-analyst': 2 } },
     ],
   },

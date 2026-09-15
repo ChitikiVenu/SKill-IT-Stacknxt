@@ -91,6 +91,8 @@ export default function CyberSecuritySubCoursePage() {
           jobReadyProfileSteps={jobReadyProfileSteps}
           projectPresentationFlow={projectPresentationFlow}
           achievementSnapshotStages={achievementSnapshotStages}
+          trackLabel="Cyber Security"
+          trackPath="/courses/cyber-security"
         />
       </div>
     </main>

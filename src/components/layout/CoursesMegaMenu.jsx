@@ -1,12 +1,19 @@
 import {motion} from 'framer-motion';
 import {BrainCircuit, ChevronRight, Database, ShieldCheck, Sparkles} from 'lucide-react';
 import {Link} from 'react-router-dom';
-import {courseTracks, cyberSecuritySubCourses} from '../../data/coursesData';
+import {aiMlSubCourses, courseTracks, cyberSecuritySubCourses} from '../../data/coursesData';
 
 const categoryIcons = {
     Security: ShieldCheck,
     AI: BrainCircuit,
     Data: Database,
+};
+
+// Tracks with a dedicated set of specialisation/module sub-course pages get a right-side flyout
+// in the menu. Any track absent from this map just gets the plain row.
+const SUB_COURSES_BY_TRACK_SLUG = {
+    'cyber-security': cyberSecuritySubCourses,
+    'ai-ml': aiMlSubCourses,
 };
 
 const panelVariants = {
@@ -50,7 +57,7 @@ export default function CoursesMegaMenu({onNavigate}) {
                 <div className='space-y-1 p-3'>
                     {courseTracks.map((track, index) => {
                         const CategoryIcon = categoryIcons[track.category] ?? Sparkles;
-                        const isCyberSecurity = track.slug === 'cyber-security';
+                        const subCourses = SUB_COURSES_BY_TRACK_SLUG[track.slug];
                         const row = (
                             <Link
                                 to={`/courses/${track.slug}`}
@@ -77,7 +84,7 @@ export default function CoursesMegaMenu({onNavigate}) {
                             </Link>
                         );
 
-                        if (!isCyberSecurity) {
+                        if (!subCourses) {
                             return (
                                 <motion.div key={track.slug} custom={index} variants={itemVariants} initial='hidden' animate='visible'>
                                     {row}
@@ -85,11 +92,11 @@ export default function CoursesMegaMenu({onNavigate}) {
                             );
                         }
 
-                        // Cyber Security additionally opens a right-side flyout of its six specialisation
-                        // courses. `group/cyber` on this wrapper (row + flyout) keeps the flyout open as
-                        // long as the pointer is over either one — position:absolute children still count
-                        // toward the ancestor's :hover state even though the flyout renders outside the
-                        // row's own box.
+                        // Tracks with sub-course pages (Cyber Security, AI & ML) additionally open a
+                        // right-side flyout of their specialisation/module courses. `group/track` on this
+                        // wrapper (row + flyout) keeps the flyout open as long as the pointer is over
+                        // either one — position:absolute children still count toward the ancestor's
+                        // :hover state even though the flyout renders outside the row's own box.
                         return (
                             <motion.div
                                 key={track.slug}
@@ -97,15 +104,15 @@ export default function CoursesMegaMenu({onNavigate}) {
                                 variants={itemVariants}
                                 initial='hidden'
                                 animate='visible'
-                                className='group/cyber relative'
+                                className='group/track relative'
                             >
                                 {row}
-                                <div className='invisible absolute left-full top-0 z-50 pl-2 opacity-0 transition duration-150 group-hover/cyber:visible group-hover/cyber:opacity-100'>
+                                <div className='invisible absolute left-full top-0 z-50 pl-2 opacity-0 transition duration-150 group-hover/track:visible group-hover/track:opacity-100'>
                                     <div className='w-[360px] rounded-3xl border border-slate-100 bg-white p-2 shadow-2xl shadow-royal/10'>
-                                        {cyberSecuritySubCourses.map((course) => (
+                                        {subCourses.map((course) => (
                                             <Link
                                                 key={course.slug}
-                                                to={`/courses/cyber-security/${course.slug}`}
+                                                to={`/courses/${track.slug}/${course.slug}`}
                                                 onClick={onNavigate}
                                                 className='group/item flex items-start gap-2 rounded-2xl p-3 text-left transition hover:bg-mist'
                                             >

@@ -8,7 +8,7 @@ export default function MockInterviewsPage() {
         <main>
             <Seo
                 title='Company Interview Question Bank'
-                description="Browse a searchable company interview question bank for Cyber Security, AI Engineer, Data Science, SOC Analyst, and Generative AI roles, plus Skill IT Education's placement partners."
+                description="Browse a searchable company interview question bank for Cyber Security, AI & ML, Data Science, SOC Analyst, and Generative AI roles, plus Skill IT Education's placement partners."
                 path='/mock-interviews'
             />
             <div className='page-shell pt-12 text-center sm:pt-16'>

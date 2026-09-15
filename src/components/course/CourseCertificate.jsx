@@ -9,6 +9,7 @@ import {getAccreditationBullets} from '../../data/coursesData';
 // certificate — just theirs, for the course they're looking at.
 export default function CourseCertificate({track}) {
     const accreditationLine = getAccreditationBullets(track)[0];
+    const article = /^[aeiou]/i.test(track.title) ? 'an' : 'a';
 
     return (
         <section>
@@ -16,7 +17,7 @@ export default function CourseCertificate({track}) {
                 <Award size={13} /> Proof of progress
             </span>
             <h2 className='mt-4 font-display text-3xl font-black text-ink sm:text-4xl'>
-                Earn a {track.title} credential you can show
+                Earn {article} {track.title} credential you can show
             </h2>
             <p className='mt-3 max-w-2xl text-base leading-7 text-muted'>
                 Finish the {track.title} program and add this credential to

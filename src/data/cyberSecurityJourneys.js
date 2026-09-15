@@ -4,33 +4,17 @@
 // this file is the much larger dataset behind the module roadmap, projects, skills, outcomes,
 // career roles, salary bands and FAQs, which genuinely differ per specialization.
 
-// Shared across all six pages on purpose: this is the pedagogical arc every specialization is
-// taught through, not specialization-specific content, so reusing it isn't "duplicate content" —
-// it's one consistent design-system element (see the module instructions: "the overall design
-// system can remain consistent across all six pages").
-export const learningFlowStages = [
-    { label: 'Beginner', detail: 'Start with zero assumed background.' },
-    { label: 'Foundation', detail: 'Core concepts explained from first principles.' },
-    { label: 'Hands-on Practice', detail: 'Guided exercises in a live lab.' },
-    { label: 'Intermediate Skills', detail: 'Combine concepts into real workflows.' },
-    { label: 'Real-world Project', detail: 'Apply everything to a full project.' },
-    { label: 'Advanced Application', detail: 'Handle edge cases like a working analyst.' },
-    { label: 'Career Ready', detail: 'Portfolio, reporting and interview-ready.' },
-];
-
-// Same reasoning as learningFlowStages — one shared six-step "job-ready profile" formula and
-// one shared project-presentation framework, reused across pages by design.
-export const jobReadyProfileSteps = ['Skills', 'Projects', 'Portfolio', 'Resume', 'Interview Explanation'];
-export const projectPresentationFlow = ['Problem', 'Approach', 'Tools', 'What I Did', 'Result', 'What I Learned'];
-
-export const achievementSnapshotStages = [
-    { label: 'Knowledge', detail: 'Core concepts understood' },
-    { label: 'Hands-on', detail: 'Practical labs completed' },
-    { label: 'Projects', detail: 'Portfolio-ready projects' },
-    { label: 'Documentation', detail: 'Professional reports' },
-    { label: 'Presentation', detail: 'Interview-ready explanation' },
-    { label: 'Career', detail: 'Entry-level career direction' },
-];
+// The pedagogical-arc constants (learningFlowStages, jobReadyProfileSteps,
+// projectPresentationFlow, achievementSnapshotStages) used to live here, but they're shared
+// design-system elements rendered by SpecializationJourney.jsx for both Cyber Security's six
+// pages and AI & ML's seven — see journeyFlowConstants.js. Re-exported below so existing
+// `import { learningFlowStages } from '../data/cyberSecurityJourneys'` call sites keep working.
+export {
+    learningFlowStages,
+    jobReadyProfileSteps,
+    projectPresentationFlow,
+    achievementSnapshotStages,
+} from './journeyFlowConstants';
 
 const HYDERABAD_LOCATIONS = 'Hyderabad, Madhapur, Hitech City and Gachibowli';
 

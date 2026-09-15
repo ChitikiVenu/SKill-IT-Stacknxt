@@ -32,7 +32,7 @@ const SectionFallback = () => (
 );
 
 const SEO_DESCRIPTION =
-    'Skill IT Education is a Hyderabad-based EdTech platform offering job-ready Cyber Security, AI Engineer, Data Science, SOC Analyst, and Generative AI courses with live mentorship, labs, and placement support.';
+    'Skill IT Education is a Hyderabad-based EdTech platform offering job-ready Cyber Security, AI & ML, Data Science, SOC Analyst, and Generative AI courses with live mentorship, labs, and placement support.';
 
 const SCROLL_LEAD_STORAGE_KEY = 'skillit_scroll_lead_shown';
 
@@ -85,7 +85,7 @@ export default function LandingPage() {
     return (
         <main>
             <Seo
-                title='Cyber Security, AI Engineer, Data Science, SOC Analyst & GenAI Courses'
+                title='Cyber Security, AI & ML, Data Science, SOC Analyst & GenAI Courses'
                 description={SEO_DESCRIPTION}
                 path='/'
                 jsonLd={[educationalOrganizationJsonLd(), faqPageJsonLd(faqs)]}

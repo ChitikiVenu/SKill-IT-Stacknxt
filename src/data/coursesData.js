@@ -147,14 +147,14 @@ export const courseTracks = [
         ],
     },
     {
-        slug: 'ai-engineer',
-        brochureFile: '/brochures/ai-engineer.pdf',
+        slug: 'ai-ml',
+        brochureFile: '/brochures/ai-ml.pdf',
         category: 'AI',
-        title: 'AI Engineer',
+        title: 'AI & ML',
         metaTitle:
-            'AI Engineer Certification Course in Hyderabad | PyTorch & MLOps Training',
+            'AI & ML Certification Course in Hyderabad | PyTorch & MLOps Training',
         metaDescription:
-            'AI Engineer certification with Python, PyTorch, deep learning, computer vision, NLP and LLMs. GPU labs, live builds, placement support in Hyderabad.',
+            'AI & ML certification with Python, PyTorch, deep learning, computer vision, NLP and LLMs. GPU labs, live builds, placement support in Hyderabad.',
         duration: '8 months',
         hours: '780+ hours',
         level: 'Intermediate',
@@ -166,8 +166,8 @@ export const courseTracks = [
         image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=85',
         tint: 'from-emerald-600 to-teal-500',
         hero: {
-            headline: 'AI Engineer Course',
-            body: 'Train as an AI engineer who can ship, not just experiment. Our artificial intelligence training course takes you from Python and mathematics through deep learning, computer vision, NLP and large language models, then into deployment, monitoring and cost control. You build models on GPU-backed labs and put every one of them into a running application.',
+            headline: 'AI & ML Course',
+            body: 'Train as an AI & ML engineer who can ship, not just experiment. Our artificial intelligence training course takes you from Python and mathematics through deep learning, computer vision, NLP and large language models, then into deployment, monitoring and cost control. You build models on GPU-backed labs and put every one of them into a running application.',
         },
         whyChoose: {
             columnA: [
@@ -247,12 +247,12 @@ export const courseTracks = [
         faqs: [
             {
                 question:
-                    'Why choose Skill IT Education for AI Engineer training in Hyderabad?',
+                    'Why choose Skill IT Education for AI & ML training in Hyderabad?',
                 answer: 'Because the programme is measured on what runs, not what compiles. Around 40% of the syllabus sits after model training — deployment, monitoring and cost — which is precisely where entry-level candidates get rejected. Every build ships to a live endpoint, and both major frameworks are taught so you are not locked out of half the job market.',
             },
             {
                 question:
-                    'Does Skill IT Education offer online AI Engineer classes also?',
+                    'Does Skill IT Education offer online AI & ML classes also?',
                 answer: 'Yes. Live online batches run the same instructor-led syllabus with screen-shared debugging, architecture reviews and recorded sessions, plus identical GPU lab hours. Classroom batches run in Hyderabad, and a blended track suits developers fitting study around delivery work.',
             },
             {
@@ -277,12 +277,12 @@ export const courseTracks = [
                 answer: 'Yes. Python, linear algebra, calculus and statistics are all taught from zero across the first stage, and graduates from mechanical, electrical, commerce and science backgrounds complete the programme regularly. What the course does assume is time — ten to twelve hours a week of independent building.',
             },
             {
-                question: 'What are the AI engineer course fees and duration?',
+                question: 'What are the AI & ML course fees and duration?',
                 answer: 'The programme runs eight months across 780+ learning hours, including 150 hours of live instruction, with blended, live online and classroom training available in Hyderabad — all including GPU lab access, twenty-one builds and placement support. EMI options are available. See current pricing above or download the curriculum for the full fee breakdown.',
             },
             {
                 question:
-                    'What topics are covered in the AI engineer course and how does it make students job-ready?',
+                    'What topics are covered in the AI & ML course and how does it make students job-ready?',
                 answer: 'Python and mathematics, machine learning, deep learning, computer vision, NLP and large language models, reinforcement learning, MLOps and responsible AI. Job readiness comes from the deliverable: twenty-one applications that actually run, which is what technical interviews inspect before anything else.',
             },
             {
@@ -704,7 +704,7 @@ export const courseTracks = [
             },
             {
                 question: 'What is the Generative AI career path in India?',
-                answer: 'Most people enter as a generative AI or LLM engineer building on existing models. From there, paths run toward AI solutions architecture, platform and infrastructure work, evaluation and safety specialisation, or deeper model work if you add the mathematical foundations our AI Engineer programme covers.',
+                answer: 'Most people enter as a generative AI or LLM engineer building on existing models. From there, paths run toward AI solutions architecture, platform and infrastructure work, evaluation and safety specialisation, or deeper model work if you add the mathematical foundations our AI & ML programme covers.',
             },
             {
                 question:
@@ -857,3 +857,98 @@ export const cyberSecuritySubCourses = [
 
 export const getCyberSecuritySubCourseBySlug = (slug) =>
     cyberSecuritySubCourses.find((course) => course.slug === slug);
+
+// The seven modules inside the AI & ML track, surfaced as their own nav submenu + clean SEO
+// URLs — same pattern as cyberSecuritySubCourses above. Sourced from the AI Engineering
+// brochure (Python foundations through Machine Learning, Generative AI, Agentic AI and MLOps
+// to a capstone AI solution). Focused slices of the single "ai-ml" course, not separate paid
+// programs, so each links back to it for enrollment.
+export const aiMlSubCourses = [
+    {
+        slug: 'python-technical-foundations-course',
+        title: 'Python & Technical Foundations Course',
+        tagline: 'Write real software before you write a single line of AI.',
+        blurb: 'Build the Python, Git and command-line fluency every AI engineering role assumes on day one — the foundation the rest of the AI & ML programme is built on.',
+        bullets: [
+            'Python programming fundamentals, functions and object-oriented design',
+            'Git and GitHub version control, virtual environments and dependency management',
+            'Linux command-line fluency and debugging technique',
+            'Working with JSON, HTTP and REST APIs',
+        ],
+    },
+    {
+        slug: 'python-backend-development-ai-course',
+        title: 'Python Backend Development with AI Course',
+        tagline: 'Learn to ship the services every AI model gets served through.',
+        blurb: 'Build production-grade backend systems with FastAPI, databases and authentication — the infrastructure layer every deployed AI feature depends on.',
+        bullets: [
+            'FastAPI development and RESTful API design',
+            'PostgreSQL, MongoDB and Redis fundamentals',
+            'Authentication, authorization and API security',
+            'Docker containerisation and CI/CD with GitHub Actions',
+        ],
+    },
+    {
+        slug: 'machine-learning-engineering-course',
+        title: 'Machine Learning Engineering Course',
+        tagline: 'Train, evaluate and serve real models, not notebook experiments.',
+        blurb: 'Go beyond prototyping in a notebook — build the full ML engineering pipeline from raw data through a trained, served and monitored model.',
+        bullets: [
+            'Supervised and unsupervised learning, feature engineering',
+            'Model training, evaluation and deep learning fundamentals',
+            'Building end-to-end ML pipelines',
+            'Model serving, deployment and monitoring',
+        ],
+    },
+    {
+        slug: 'generative-ai-llm-application-course',
+        title: 'Generative AI & LLM Application Engineering Course',
+        tagline: 'Build real products on large language models.',
+        blurb: 'Move from prompt engineering to production Retrieval-Augmented Generation — build LLM-powered applications grounded in your own data.',
+        bullets: [
+            'LLM APIs, prompt engineering and structured outputs',
+            'Embeddings, vector databases and document chunking',
+            'Retrieval-Augmented Generation (RAG) and reranking',
+            'PostgreSQL, pgvector and RAG evaluation',
+        ],
+    },
+    {
+        slug: 'agentic-ai-engineering-course',
+        title: 'Agentic AI Engineering Course',
+        tagline: 'Build AI that reasons, calls tools and acts autonomously.',
+        blurb: 'Design and build AI agents that plan across multiple steps, call external tools and operate safely and reliably in production.',
+        bullets: [
+            'AI agent fundamentals, tool calling and state management',
+            'Multi-agent patterns and human-in-the-loop design',
+            'Model Context Protocol (MCP) fundamentals',
+            'Guardrails, retries and agent evaluation',
+        ],
+    },
+    {
+        slug: 'mlops-llmops-ai-platform-course',
+        title: 'MLOps, LLMOps & AI Platform Engineering Course',
+        tagline: 'Keep AI systems reliable once real users depend on them.',
+        blurb: 'Build the operational discipline behind production AI — experiment tracking, CI/CD, observability and cost control for both classical ML and LLM systems.',
+        bullets: [
+            'Experiment tracking, model and prompt versioning',
+            'CI/CD and regression testing for AI systems',
+            'Tracing, observability and cloud IAM',
+            'Scaling, rollback strategy, cost and latency management',
+        ],
+    },
+    {
+        slug: 'ai-solutions-engineering-course',
+        title: 'AI Solutions Engineering Course',
+        tagline: 'Turn engineering skill into a client-ready AI solution.',
+        blurb: 'Learn to scope, architect and deliver a complete AI solution end to end — from client discovery through UAT to a live demonstration.',
+        bullets: [
+            'Client discovery, requirement gathering and workflow mapping',
+            'AI solution architecture and system/API integration',
+            'Security, PII handling and solution prototyping',
+            'UAT, deployment and client demonstration',
+        ],
+    },
+];
+
+export const getAiMlSubCourseBySlug = (slug) =>
+    aiMlSubCourses.find((course) => course.slug === slug);

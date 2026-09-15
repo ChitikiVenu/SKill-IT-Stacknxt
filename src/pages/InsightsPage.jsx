@@ -18,7 +18,7 @@ export default function InsightsPage() {
         <main>
             <Seo
                 title='Insights'
-                description='Career advice, interview prep, and industry notes from Skill IT Education across Cyber Security, AI Engineer, Data Science, SOC Analyst, and Generative AI.'
+                description='Career advice, interview prep, and industry notes from Skill IT Education across Cyber Security, AI & ML, Data Science, SOC Analyst, and Generative AI.'
                 path='/insights'
             />
             <div className='page-shell pt-12 text-center sm:pt-16'>

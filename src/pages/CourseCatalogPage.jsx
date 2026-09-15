@@ -7,8 +7,8 @@ export default function CourseCatalogPage() {
     return (
         <main>
             <Seo
-                title='Cyber Security, AI Engineer, Data Science, SOC Analyst & GenAI Course Fees'
-                description="Compare Skill IT Education's Hyderabad course catalog: Cyber Security, AI Engineer, Data Science, SOC Analyst, and Generative AI programs with duration, level, and scholarship pricing."
+                title='Cyber Security, AI & ML, Data Science, SOC Analyst & GenAI Course Fees'
+                description="Compare Skill IT Education's Hyderabad course catalog: Cyber Security, AI & ML, Data Science, SOC Analyst, and Generative AI programs with duration, level, and scholarship pricing."
                 path='/courses'
                 jsonLd={courseListJsonLd()}
             />
