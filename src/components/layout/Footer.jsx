@@ -47,7 +47,7 @@ const footerColumns = [
         title: 'Popular Courses',
         links: [
             {label: 'Cyber Security Course', to: '/courses'},
-            {label: 'AI Engineer Course', to: '/courses'},
+            {label: 'AI & ML Course', to: '/courses'},
             {label: 'Data Science Course', to: '/courses'},
             {label: 'SOC Analyst Course', to: '/courses'},
             {label: 'Generative AI Course', to: '/courses'},
@@ -57,7 +57,7 @@ const footerColumns = [
         title: 'Popular Certifications',
         links: [
             {label: 'Cyber Security Certification', to: '/courses'},
-            {label: 'AI Engineer Certification', to: '/courses'},
+            {label: 'AI & ML Certification', to: '/courses'},
             {label: 'Data Science Certification', to: '/courses'},
             {label: 'SOC Analyst Certification', to: '/courses'},
             {label: 'Generative AI Certification', to: '/courses'},
@@ -71,7 +71,7 @@ const footerColumns = [
         title: 'Popular Offline Courses',
         links: [
             {label: 'Cyber Security Classroom Training', to: '/courses'},
-            {label: 'AI Engineer Classroom Training', to: '/courses'},
+            {label: 'AI & ML Classroom Training', to: '/courses'},
             {label: 'Data Science Classroom Training', to: '/courses'},
             {label: 'SOC Analyst Classroom Training', to: '/courses'},
         ],

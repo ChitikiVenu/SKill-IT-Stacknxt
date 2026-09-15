@@ -10,6 +10,7 @@ import ScrollToTop from './components/common/ScrollToTop';
 import LandingPage from './pages/LandingPage';
 
 const AboutPage = lazy(() => import('./pages/AboutPage'));
+const AiMlSubCoursePage = lazy(() => import('./pages/AiMlSubCoursePage'));
 const AuthModal = lazy(() => import('./components/auth/AuthModal'));
 const BrochureCenterPage = lazy(() => import('./pages/BrochureCenterPage'));
 const CertificationsPage = lazy(() => import('./pages/CertificationsPage'));
@@ -42,6 +43,7 @@ export default function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/courses" element={<CourseCatalogPage />} />
             <Route path="/courses/cyber-security/:subSlug" element={<CyberSecuritySubCoursePage />} />
+            <Route path="/courses/ai-ml/:subSlug" element={<AiMlSubCoursePage />} />
             <Route path="/courses/:slug" element={<CourseDetailPage />} />
             <Route path="/brochures" element={<BrochureCenterPage />} />
             <Route path="/mock-interviews" element={<MockInterviewsPage />} />

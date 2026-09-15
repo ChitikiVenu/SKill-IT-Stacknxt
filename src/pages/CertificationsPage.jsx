@@ -16,7 +16,7 @@ export default function CertificationsPage() {
         <main>
             <Seo
                 title='Certification & Accreditation Partners'
-                description="Skill IT Education's certification alignment and accreditation ecosystem across Cyber Security, AI Engineer, Data Science, SOC Analyst, and Generative AI programs."
+                description="Skill IT Education's certification alignment and accreditation ecosystem across Cyber Security, AI & ML, Data Science, SOC Analyst, and Generative AI programs."
                 path='/certifications'
             />
             <div className='page-shell pt-12 text-center sm:pt-16'>

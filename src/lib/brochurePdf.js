@@ -212,7 +212,7 @@ export function generateMasterBrochure() {
     addParagraph(
         doc,
         cursor,
-        'Skill IT Education is a Hyderabad-based EdTech platform offering job-ready Cyber Security, AI Engineer, Data Science, SOC Analyst, and Generative AI programmes with live mentorship, hands-on labs, and dedicated placement support.',
+        'Skill IT Education is a Hyderabad-based EdTech platform offering job-ready Cyber Security, AI & ML, Data Science, SOC Analyst, and Generative AI programmes with live mentorship, hands-on labs, and dedicated placement support.',
         pageLabel,
     );
 

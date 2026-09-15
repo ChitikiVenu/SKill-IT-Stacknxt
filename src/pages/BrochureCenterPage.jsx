@@ -34,7 +34,7 @@ export default function BrochureCenterPage() {
         <main>
             <Seo
                 title='Course Brochure Download Center'
-                description='Download PDF brochures for Cyber Security, AI Engineer, Data Science, SOC Analyst, and Generative AI programmes, or the unified Skill IT Education master brochure.'
+                description='Download PDF brochures for Cyber Security, AI & ML, Data Science, SOC Analyst, and Generative AI programmes, or the unified Skill IT Education master brochure.'
                 path='/brochures'
             />
             <div className='page-shell pt-12 text-center sm:pt-16'>
@@ -67,7 +67,7 @@ export default function BrochureCenterPage() {
                                 Skill IT Education — Master Brochure
                             </h3>
                             <p className='mt-2 max-w-lg text-sm leading-6 text-white/80'>
-                                Cyber Security, AI Engineer, Data Science, SOC
+                                Cyber Security, AI & ML, Data Science, SOC
                                 Analyst, and Generative AI — with our Hyderabad
                                 Madhapur center details, delivery modes, and
                                 payment plans.

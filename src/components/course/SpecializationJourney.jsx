@@ -5,10 +5,14 @@ import {
   ArrowRight,
   BadgeCheck,
   BookOpen,
+  Bot,
   Briefcase,
   Brain,
   ChevronDown,
+  Cloud,
+  Code2,
   Cpu,
+  Database,
   FileSearch,
   FileText,
   Fingerprint,
@@ -21,24 +25,28 @@ import {
   Network,
   Presentation,
   Radar,
+  Rocket,
   Router,
   ScanLine,
   ScanSearch,
   Search,
+  Server,
   Shield,
   ShieldAlert,
   Smartphone,
   Sparkles,
   Terminal,
   Wallet,
+  Workflow,
 } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const ICONS = {
-  Activity, BadgeCheck, BookOpen, Briefcase, Brain, Cpu, FileSearch, FileText, Fingerprint,
-  FlaskConical, FolderGit2, HardDrive, Network, Presentation, Radar, Router, ScanLine,
-  ScanSearch, Search, Shield, ShieldAlert, Smartphone, Sparkles, Terminal,
+  Activity, BadgeCheck, BookOpen, Bot, Briefcase, Brain, Cloud, Code2, Cpu, Database,
+  FileSearch, FileText, Fingerprint, FlaskConical, FolderGit2, HardDrive, Network,
+  Presentation, Radar, Rocket, Router, ScanLine, ScanSearch, Search, Server, Shield,
+  ShieldAlert, Smartphone, Sparkles, Terminal, Workflow,
 };
 
 const Icon = ({ name, ...props }) => {
@@ -51,7 +59,17 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 };
 
-export default function SpecializationJourney({ course, journey, parentTrack, learningFlowStages, jobReadyProfileSteps, projectPresentationFlow, achievementSnapshotStages }) {
+export default function SpecializationJourney({
+  course,
+  journey,
+  parentTrack,
+  learningFlowStages,
+  jobReadyProfileSteps,
+  projectPresentationFlow,
+  achievementSnapshotStages,
+  trackLabel = 'Cyber Security',
+  trackPath = '/courses/cyber-security',
+}) {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
   const toggleFaq = (index) => setOpenFaqIndex((current) => (current === index ? -1 : index));
 
@@ -68,16 +86,16 @@ export default function SpecializationJourney({ course, journey, parentTrack, le
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
           <div>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide">
-              <Layers size={13} /> Part of our full Cyber Security programme
+              <Layers size={13} /> Part of our full {trackLabel} programme
             </span>
             <p className="mt-3 max-w-xl text-sm leading-6 text-white/90 sm:text-base">
-              This specialisation is taught as part of the {parentTrack.duration} Cyber Security course — see the
+              This specialisation is taught as part of the {parentTrack.duration} {trackLabel} course — see the
               full curriculum, pricing and batch dates on the main course page.
             </p>
           </div>
           <div className="flex shrink-0 flex-wrap gap-3">
-            <Link to="/courses/cyber-security" className="rounded-full bg-white px-5 py-2.5 text-sm font-extrabold text-ink transition hover:bg-mist">
-              View full Cyber Security programme
+            <Link to={trackPath} className="rounded-full bg-white px-5 py-2.5 text-sm font-extrabold text-ink transition hover:bg-mist">
+              View full {trackLabel} programme
             </Link>
             <Link to="/contact" className="rounded-full border border-white/60 px-5 py-2.5 text-sm font-extrabold text-white transition hover:bg-white/10">
               Talk to an advisor
@@ -302,16 +320,16 @@ export default function SpecializationJourney({ course, journey, parentTrack, le
         variants={fadeUp}
       >
         <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-sky">
-          <MapPin size={12} /> Cyber Security training in Hyderabad
+          <MapPin size={12} /> {trackLabel} training in Hyderabad
         </span>
-        <h2 className="mx-auto mt-4 max-w-2xl font-display text-2xl font-black sm:text-3xl">Ready to build your Cyber Security career?</h2>
+        <h2 className="mx-auto mt-4 max-w-2xl font-display text-2xl font-black sm:text-3xl">Ready to build your {trackLabel} career?</h2>
         <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-300 sm:text-base">
-          Explore the complete {parentTrack.duration} Cyber Security programme and see how {course.title.toLowerCase()}{' '}
+          Explore the complete {parentTrack.duration} {trackLabel} programme and see how {course.title.toLowerCase()}{' '}
           fits into your full learning journey.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <Link to="/courses/cyber-security" className="primary-button">
-            View full Cyber Security programme <ArrowRight size={16} />
+          <Link to={trackPath} className="primary-button">
+            View full {trackLabel} programme <ArrowRight size={16} />
           </Link>
           <Link to="/contact" className="rounded-full border border-white/60 px-5 py-2.5 text-sm font-extrabold text-white transition hover:bg-white/10">
             Talk to an advisor
